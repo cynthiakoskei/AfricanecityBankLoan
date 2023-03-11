@@ -1,0 +1,71 @@
+.login_container {
+    background-color: white;
+    padding: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 30vw;
+    margin: auto;
+    height: 60vh;
+    margin-top: 10vh;
+}
+h1 {
+    margin-bottom: 6%;
+    text-align: center;
+    font-family: "Fredoka One", cursive;
+    color: goldenrod;
+    letter-spacing: 0.1rem;
+}
+
+p {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid#333;
+    line-height: 0.1rem;
+}
+
+p span {
+    background: white;
+    padding: 0 10px;
+}
+
+input {
+    margin-bottom: 3%;
+}
+
+input:last-of-type {
+    margin-bottom: 0;
+}
+
+input,
+button {
+    padding: 3%;
+    width: 100%;
+}
+
+#submit,
+#Register_btn {
+    background-color: orangered;
+    color: white;
+    border: none;
+    margin-top: 5%;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+#signUp_btn {
+    border: none;
+}
+
+
+#return_btn {
+    background: none;
+    color: grey;
+    text-decoration: underline;
+    border: none;
+    margin-top: 3%;
+}

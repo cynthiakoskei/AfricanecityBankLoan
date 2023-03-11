@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="{% static 'css/registration.css' %}" rel="stylesheet" >
+</head>
+<body>
+	<div class="login_container">
+		<div id="main">
+			<form method="POST">
+				<h1>Sign In</h1>
+				<input id="email" type="email" placeholder="Email">
+				<input id="password" type="password" placeholder="Password">
+				<button id="submit">Login</button>
+				<p><span>Don't have an account</span></p>
+				<button id="signUp_btn"><a href="register">Sign up</a></button>
+			<form>
+		</div>		
+	</div>
+</body>
+</html>

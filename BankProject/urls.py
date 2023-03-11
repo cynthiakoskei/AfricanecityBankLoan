@@ -17,7 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+<<<<<<< HEAD
     path("admin/", admin.site.urls),
     path("", include("Home.urls")),
     path('Accounts/', include("Accounts.urls"))
 ]
+=======
+    path('admin/', admin.site.urls),
+    path('', include("Home.urls") ),
+]
+>>>>>>> db9809b (Template index and css changes)

@@ -5,7 +5,7 @@ from django.db import models
 class Bank(models.Model):
     bankName= models.CharField(max_length=100)
     image = models.ImageField()
-    interestRate = models.DecimalField(max_digits=2,decimal_places=2)
+    interestRate = models.IntegerField()
       
     def __str__(self): 
         return self.bankName

@@ -1,34 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Africanecity Bank Loan</title>
-</head>
-<body>
-    <nav class="navbar">
-        <a class="logo">Africanecity Bank Loans</a>
-        <input class="menu-btn" type="checkbox" id="menu-btn" />
-        <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
-        <ul class="menu">
-          {% if user.is_authenticated %}
-            <h1>Welcome,{{user.username | upper}} </h1>
-            <a href="{% url 'logout' %}">Logout</a>
-            {% else %}
-            <h1>You are not logged in</h1>
-            <a href="{% url 'login' %}">Login</a>
-          {% endif %}
-          <li><a href="#home"><img src="" class="" alt="home icon"> Home</a></li>
-          <li><a href="#"><img src="" class="icon" alt="home icon"> Calculator</a></li>
-          <li><a href="Accounts/login"><img src="" class="icon" alt="home icon"> Log in</a></li>
-        </ul>
-      </nav>
-      {% include 'messaging.html' %}
-</body>
-</html>
-=======
 
 {% extends 'base.html' %}
 
@@ -47,15 +16,19 @@
 			</div>
 			<div class="menu_content">
 				<ul>
-					<li><a href="inex.html">Home</a></li>
+					<li><a href="index.html">Home</a></li>
 					<li><a href="about.html">About us</a></li>
 					<li><a href="#">Services</a></li>
 					<li><a href="news.html">News</a></li>
 					<li><a href="contact.html">Contact</a></li>
+					{% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
 				</ul>
 			</div>
 			<div class="menu_social">
-				<div class="menu_phone ml-auto">Call us: 00-56 445 678 33</div>
 				<ul class="d-flex flex-row align-items-start justify-content-start">
 					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -78,7 +51,7 @@
 					<!-- Slide -->
 					<div class="owl-item">
 						<div class="background_image"
-							style="background-image:url({% static 'images/home_slider.jpg' %})"></div>
+							style="background-image:url({% static 'images/home_slider.jpg' % })"></div>
 						<div class="home_slider_content_container">
 							<div class="container">
 								<div class="row">
@@ -176,4 +149,4 @@
 		
 
 {% endblock %}		
->>>>>>> 1cfee3a4e650a86b1fb7fed577f70c79d11a5d05
+

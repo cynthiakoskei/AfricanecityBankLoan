@@ -12,10 +12,18 @@
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
         <ul class="menu">
+          {% if user.is_authenticated %}
+            <h1>Welcome,{{user.username | upper}} </h1>
+            <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <h1>You are not logged in</h1>
+            <a href="{% url 'login' %}">Login</a>
+          {% endif %}
           <li><a href="#home"><img src="" class="" alt="home icon"> Home</a></li>
           <li><a href="#"><img src="" class="icon" alt="home icon"> Calculator</a></li>
           <li><a href="Accounts/login"><img src="" class="icon" alt="home icon"> Log in</a></li>
         </ul>
       </nav>
+      {% include 'messaging.html' %}
 </body>
 </html>

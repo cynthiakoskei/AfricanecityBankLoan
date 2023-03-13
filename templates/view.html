@@ -1,9 +1,67 @@
+<<<<<<< HEAD
 <!-- {% for listing in listings%}
+=======
+>>>>>>> 5943ae48e4764d62f5687a2ace0b670977c47442
 
-<p>{{listing.bankName}}</p>
-<img src ="{{listing.image.url}}">
-<p>{{listing.interestRate}}</p>
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Bank Views </title>
+    <style>
+		section {
+			text-align: center;
+			padding: 2rem 7%;
+		}
+		section  h2{
+			text-transform: uppercase;
+		}
+		.products{
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			background: whitesmoke;
+		}
+		.products .content li{
+			padding: .5rem 2.5rem;
+			list-style: none;
+			max-width: 70rem;
+			flex: 1 1 45rem;
+			color: #13131a;
+			background: whitesmoke;border: .1rem solid rgba(19, 18, 18, 0.3);
+		}
+		.products .content li a{
+			text-decoration: none;
+			color: #fff;
+			background: rgb(4, 5, 39);
+			margin-top: 1rem;
+			display: inline-block;
+			padding: .9rem 2.5rem;
+			font-size: 1.5rem;
+			cursor: pointer;
+			margin-bottom: 1rem;
+		}
+        .products .content li h3{
+            text-transform: capitalize;
+			font-size: 1.6rem;
+        }
+		.products .content p{
+			font-size: 1.2rem;
+		}
+		.products .content p span{
+			color: red;
+		}
+		
+		.products .content li img {
+			height: 10rem;
+			border-radius: 50%;
+			background: grey;
+		}
+    </style>
+</head>
 
+<<<<<<< HEAD
 {% endfor %} -->
 {% load static %}
 <!DOCTYPE html>
@@ -61,10 +119,13 @@
     </style>
 </head>
 
+=======
+>>>>>>> 5943ae48e4764d62f5687a2ace0b670977c47442
 <body>
     
 
     <main>
+<<<<<<< HEAD
         <section class="section" id="Productos">
             <h2> Recomendados del mes </h2>
             {% for listing in listings%}
@@ -81,6 +142,24 @@
 
             </div>
             {% endfor %}
+=======
+        <section class="productus"> 
+			<h2> Recomendations </h2>
+			<div class="products">
+				{% for listing in listings%}
+				<div class="content">
+					<ul>
+						<li>
+							<img class="image" src="{{listing.image.url}}"/>
+							<h3>{{listing.bankName}} bank</h3>
+							<p>Interest rate <span>{{listing.interestRate}}%</span></p>
+							<a href="">Apply</a>
+						</li>
+					</ul>
+				</div>
+				{% endfor %}
+			</div>
+>>>>>>> 5943ae48e4764d62f5687a2ace0b670977c47442
         </section>
     </main>
     

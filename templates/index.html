@@ -16,15 +16,19 @@
 			</div>
 			<div class="menu_content">
 				<ul>
-					<li><a href="inex.html">Home</a></li>
+					<li><a href="index.html">Home</a></li>
 					<li><a href="about.html">About us</a></li>
 					<li><a href="#">Services</a></li>
 					<li><a href="news.html">News</a></li>
 					<li><a href="contact.html">Contact</a></li>
+					{% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
 				</ul>
 			</div>
 			<div class="menu_social">
-				<div class="menu_phone ml-auto">Call us: 00-56 445 678 33</div>
 				<ul class="d-flex flex-row align-items-start justify-content-start">
 					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -47,7 +51,7 @@
 					<!-- Slide -->
 					<div class="owl-item">
 						<div class="background_image"
-							style="background-image:url({% static 'images/home_slider.jpg' %})"></div>
+							style="background-image:url({% static 'images/home_slider.jpg' % })"></div>
 						<div class="home_slider_content_container">
 							<div class="container">
 								<div class="row">
@@ -145,3 +149,4 @@
 		
 
 {% endblock %}		
+

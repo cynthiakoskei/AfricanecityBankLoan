@@ -24,3 +24,16 @@ def bank_create(request):
     }
    
     return render(request,"bank.html",context)
+
+def about(request):
+    form = BankForm()
+    if request.method == "POST":
+        form = BankForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+    
+    context = {
+        "form":form
+    }
+   
+    return render(request,"about.html",context)

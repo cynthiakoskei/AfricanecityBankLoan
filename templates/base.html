@@ -39,9 +39,14 @@
 										<li><a href="#">Services</a></li>
 										<li><a href="news.html">News</a></li>
 										<li><a href="contact.html">Contact</a></li>
+                                        {% if user.is_authenticated %}
+                                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                                        {% else %}
+                                        <li><a href="{% url 'login' %}">Login</a></li>
+                                      {% endif %}
 									</ul>
 								</nav>
-								<div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
+								
 
 								
 
@@ -65,6 +70,11 @@
 				</ul>
 			</div>
 		</header> 
+        {% if user.is_authenticated %}
+            <h5>Welcome,{{user.username | upper}} </h5>
+            {% else %}
+            <h5>You are not logged in</h5>
+        {% endif %}
 
     {% block content %}
 

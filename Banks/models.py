@@ -7,13 +7,15 @@ from phone_field import PhoneField
 class Bank(models.Model):
     bankName= models.CharField(max_length=100)
     image = models.ImageField()
-    interestRate = models.DecimalField(max_digits=2, decimal_places=2)
+    interestRate = models.DecimalField(max_digits=5, decimal_places=2)
       
     def __str__(self): 
         return self.bankName
     
-    
+# def images_path():
+#     return os.path.join(settings.LOCAL_FILE_DIR, 'images')   
 class Application(models.Model):
+    
     business_launching = 'business_launching'
     house_buying = 'house_buying'
     home_improment = 'home_improment'
@@ -22,46 +24,21 @@ class Application(models.Model):
     other = 'other'
 
     
-    # LOAN_CHOICES = [
-    #     ( business_launching,'business_launching'),
-    #     (house_buying ,'house_buying'),
-    #     (home_improment ,'home_improment'),
-    #     (investment , 'investment'),
-    #     (educucation ,'educucation'),
-    #     ( other , 'other'),
+    LOAN_CHOICES = [
+        ( business_launching,'business_launching'),
+        (house_buying ,'house_buying'),
+        (home_improment ,'home_improment'),
+        (investment , 'investment'),
+        (educucation ,'educucation'),
+        ( other , 'other'),
             
-    # ]
-    # single = 'single'
-    # married = 'married'
-    # divorce = ' divorce '
-    
-    # MARITAL_CHOICES = [
-    #     (single , 'single'),
-    #     (married , 'married'),
-    #     (divorce , ' divorce'),
-       
-            
-    # ]
-    
+    ]
+   
     disired_loan =  models.FloatField()
     annual_income =  models.FloatField()
-    # loan_will_be_used_for = models.CharField(max_length = 250, choices=LOAN_CHOICES,
-    #     default=business_launching,
-    # )
-    
-    
-    # year1 ='years1',
-    # year2 ='years2',
-    # year3 ='years3',
-    # year4 ='years5'
-    # STAY_CHOICES = [
-    #   (year1,'years1'),
-    #   (year2,'years2'),
-    #   (year3,'years3'),
-    #   (year4 ,'years5')  
-    # ]
-class ContactInfo(models.Model):
-    title = models.CharField(max_length=100)
+    loan_will_be_used_for = models.CharField(max_length = 250, choices=LOAN_CHOICES,
+        default=business_launching,
+    )
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     birth_date = models.DateField()
@@ -87,22 +64,22 @@ class ContactInfo(models.Model):
     #   (year3,'years3'),
     #   (year4 ,'years5')  
     # ]
-class PaymentInfo(models.Model):
-    first_name=models.CharField(max_length=100)
-    last_name=models.CharField(max_length=100)
-    occupation= models.IntegerField()
-    # year_of_experience = models.CharField(max_length = 250, choices=EXPERIENCE_CHOICES,default=year1)
-    gross_monthly_income = models.FloatField()
-    monthly_rent= models.FloatField()
-    down_payment = models.FloatField()
-    comments = models.CharField(max_length=250)
+# class PaymentInfo(models.Model):
+#     first_name=models.CharField(max_length=100)
+#     last_name=models.CharField(max_length=100)
+#     occupation= models.IntegerField()
+#     # year_of_experience = models.CharField(max_length = 250, choices=EXPERIENCE_CHOICES,default=year1)
+#     gross_monthly_income = models.FloatField()
+#     monthly_rent= models.FloatField()
+#     down_payment = models.FloatField()
+#     comments = models.CharField(max_length=250)
     
-class BankInfo(models.Model):
-    institution_name = models.CharField(max_length=100) 
-    saving_account = models.IntegerField()
-    bank_address = models.CharField(max_length=100)
-    phone_number = models.IntegerField()
+# class BankInfo(models.Model):
+#     institution_name = models.CharField(max_length=100) 
+#     saving_account = models.IntegerField()
+#     bank_address = models.CharField(max_length=100)
+#     phone_number = models.IntegerField()
     
-    consent = models. BooleanField(null = True)
+    # consent = models. BooleanField(null = True)
     
     

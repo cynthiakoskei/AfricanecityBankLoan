@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .models import Bank
-from .forms import BankForm
+from .models import Bank,Application
+from .forms import BankForm,ApplicationForm
 
 # Create your views here.
 def bank_list(request):
@@ -37,3 +37,16 @@ def about(request):
     }
    
     return render(request,"about.html",context)
+
+def applicant_create(request):
+    form = ApplicationForm()
+    if request.method == "POST":
+        form = ApplicationForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+    
+    context = {
+        "form":form
+    }
+   
+    return render(request,"applicantForm.html",context)

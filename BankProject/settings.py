@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "Accounts",
     "Banks",
     "Loan",
+    'phone_field',
 
 ]
 

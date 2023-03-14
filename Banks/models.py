@@ -1,7 +1,4 @@
 from django.db import models
-# import os
-# from django.conf import settings
-
 from phone_field import PhoneField
 # from phonenumber_field.modelfields import PhoneNumberField
 
@@ -25,6 +22,7 @@ class Application(models.Model):
     investment = 'investment'
     educucation = 'educucation'
     other = 'other'
+
     
     LOAN_CHOICES = [
         ( business_launching,'business_launching'),
@@ -43,36 +41,14 @@ class Application(models.Model):
     )
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    id_number = models.IntegerField()
+    birth_date = models.DateField()
+    # marital_status = models.CharField(max_length = 250, choices=MARITAL_CHOICES,default=single)
+    email = models.EmailField(max_length=254)
     phoneNumber = PhoneField(blank=True, help_text='Contact phone number')
-    occupation= models.CharField(max_length=100)
-    gross_monthly_income = models.FloatField()
-    monthly_expenditure= models.FloatField()
-    file = models.ImageField()
-    # file = models.FilePathField(path=images_path)
-    consent = models. BooleanField(null = True)
-
-
-
-
-
-   
-    
-    
-    
- 
-# class ContactInfo(models.Model):
-#     title = models.CharField(max_length=100)
-    
-#     birth_date = models.DateField()
-  
-#     email = models.EmailField(max_length=254)
-#     phoneNumber = models.IntegerField()
-#     home_address = models.CharField(max_length=100)
-#     city = models.CharField(max_length=100)
-#     state_province = models.CharField(max_length=100)
-#     postal_code = models.CharField( max_length=6)
-    
+    home_address = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    state_province = models.CharField(max_length=100)
+    postal_code = models.CharField( max_length=6)
     # years_of_residence= models.CharField( choices=STAY_CHOICES,
         
     # )

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<!-- {% for listing in listings%}
-=======
->>>>>>> 5943ae48e4764d62f5687a2ace0b670977c47442
 
 {% load static %}
 <!DOCTYPE html>
@@ -61,88 +57,10 @@
     </style>
 </head>
 
-<<<<<<< HEAD
-{% endfor %} -->
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title> Bank Views </title>
-    
-
-    <style>
-        #Productos {
-            margin: 16px 32px;
-            padding: 16px 32px;
-        }
-        
-        #Productos h2 {
-            text-align: center;
-        }
-        
-        #Productos div ul {
-            padding: 16px 32px;
-            list-style: none;
-            display: flex;
-            justify-content:space-around;
-        }
-        
-        
-        #Productos div ul li {
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-       
-         -->
-        #Productos div ul li a {
-            padding: 8px 10px;
-            background-color: var(--second-color);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--first-color);
-            
-        
-        
-        
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-    </style>
-</head>
-
-=======
->>>>>>> 5943ae48e4764d62f5687a2ace0b670977c47442
 <body>
     
 
     <main>
-<<<<<<< HEAD
-        <section class="section" id="Productos">
-            <h2> Recomendados del mes </h2>
-            {% for listing in listings%}
-            <div>
-            <ul>
-                <li>
-                    <img src="{{listing.image.url}}" style="width:250px;height:350px;"/>
-                    <h3> {{listing.bankName}}</h3>
-                    <p>{{listing.interestRate}}</p>
-                    <a href="ver"> VER </a>
-                </li>
-               
-            </ul>
-
-            </div>
-            {% endfor %}
-=======
         <section class="productus"> 
 			<h2> Recomendations </h2>
 			<div class="products">
@@ -159,7 +77,6 @@
 				</div>
 				{% endfor %}
 			</div>
->>>>>>> 5943ae48e4764d62f5687a2ace0b670977c47442
         </section>
     </main>
     

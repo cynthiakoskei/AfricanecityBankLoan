@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Bank,Application,ContactInfo
+from .models import Bank,Application,ContactInfo,PaymentInfo
 # Register your models here.
 
 admin.site.register(Bank)	
 admin.site.register(Application)	
 admin.site.register(ContactInfo)
+admin.site.register(PaymentInfo)
 

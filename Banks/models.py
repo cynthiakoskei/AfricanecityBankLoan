@@ -20,8 +20,7 @@ class Application(models.Model):
     investment = 'investment'
     educucation = 'educucation'
     other = 'other'
-    
-    contNum = PhoneField(blank=True, help_text='Contact phone number')
+
     
     # LOAN_CHOICES = [
     #     ( business_launching,'business_launching'),
@@ -68,7 +67,7 @@ class ContactInfo(models.Model):
     birth_date = models.DateField()
     # marital_status = models.CharField(max_length = 250, choices=MARITAL_CHOICES,default=single)
     email = models.EmailField(max_length=254)
-    phoneNumber = models.IntegerField()
+    phoneNumber = PhoneField(blank=True, help_text='Contact phone number')
     home_address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     state_province = models.CharField(max_length=100)

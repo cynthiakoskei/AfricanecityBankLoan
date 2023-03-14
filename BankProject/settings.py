@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "Banks",
     "Loan",
     'phone_field',
+
 ]
 
 MIDDLEWARE = [

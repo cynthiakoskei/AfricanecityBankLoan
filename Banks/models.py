@@ -1,4 +1,5 @@
 from django.db import models
+from phone_field import PhoneField
 # from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
@@ -19,6 +20,8 @@ class Application(models.Model):
     investment = 'investment'
     educucation = 'educucation'
     other = 'other'
+    
+    contNum = PhoneField(blank=True, help_text='Contact phone number')
     
     # LOAN_CHOICES = [
     #     ( business_launching,'business_launching'),

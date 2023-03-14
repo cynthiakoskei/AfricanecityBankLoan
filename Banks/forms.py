@@ -1,5 +1,5 @@
 from django import forms
-from .models import Bank,Application,ContactInfo,PaymentInfo
+from .models import Bank,Application,ContactInfo,PaymentInfo,BankInfo
 
 class BankForm(forms.ModelForm):
     class Meta:
@@ -22,4 +22,9 @@ class ContactInfoForm(forms.ModelForm):
 class PaymentInfoForm(forms.ModelForm):
     class Meta:
         model = PaymentInfo
-        fields = "__all__"          
+        fields = "__all__"   
+        
+class BankInfoForm(forms.ModelForm):
+    class Meta:
+        model = BankInfo
+        fields = "__all__"         

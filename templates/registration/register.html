@@ -16,6 +16,11 @@
             <form method="post">
                 {% csrf_token %}
                 <h1>Sign Up below</h1>
+                {% if messages %}
+				{% for message in messages %}
+				<h2>{{message}}</h2>
+				{% endfor %}
+				{% endif %}
                 <input name="email" type="email" placeholder="Email">
                 <input name="username" type="text" placeholder="username">
                 <input name="password1" type="password" placeholder="Password">

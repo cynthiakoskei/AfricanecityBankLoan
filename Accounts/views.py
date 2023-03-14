@@ -22,7 +22,7 @@ def login_request(request):
                 messages.info(request,"Account doesn't exists")
                 return redirect('register')
         else:
-            messages.info('Invalid credentils')
+            messages.info(request,'Invalid credentials')
     else:
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})

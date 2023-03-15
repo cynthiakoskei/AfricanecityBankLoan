@@ -1,21 +1,23 @@
 .login_container {
-    background-color: white;
+    background-color: whitesmoke;
     padding: 5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: 30vw;
     margin: auto;
-    height: 60vh;
-    margin-top: 10vh;
+    height: 75vh;
+    margin-top: 5vh;
 }
 h1 {
-    margin-bottom: 6%;
+    margin-bottom: 7%;
     text-align: center;
     font-family: "Fredoka One", cursive;
-    color: goldenrod;
+    color: #010103;
     letter-spacing: 0.1rem;
 }
 h2{
     color: red;
+    font-size: 1.2rem;
+    font-family: sans-serif;
 }
 
 p {
@@ -34,6 +36,7 @@ p span {
 
 input {
     margin-bottom: 3%;
+    width: 300px;
 }
 
 input:last-of-type {
@@ -43,12 +46,14 @@ input:last-of-type {
 input,
 button {
     padding: 3%;
-    width: 100%;
+}
+button{
+    width: 300px;
 }
 
 #submit,
 #Register_btn {
-    background-color: orangered;
+    background: rgb(4, 5, 39);
     color: white;
     border: none;
     margin-top: 5%;
@@ -61,7 +66,8 @@ button:hover {
 }
 
 #signUp_btn {
-    border: none;
+    border: none; 
+    background:none;
 }
 
 

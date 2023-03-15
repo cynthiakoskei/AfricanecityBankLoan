@@ -49,6 +49,19 @@ class Application(models.Model):
     city = models.CharField(max_length=100)
     state_province = models.CharField(max_length=100)
     postal_code = models.CharField( max_length=6)
+    
+class Features(models.Model):
+    min_amount = models.FloatField()
+    max_amount = models.FloatField()
+    low_interest_rate =  models.DecimalField(max_digits=3, decimal_places=2)
+    illustration_rate = models.DecimalField(max_digits=3, decimal_places=2)
+    amount_borrowed = models.FloatField()
+    initiation_fee = models.FloatField()
+    monthly_service_fee = models.FloatField()
+    amount_payable = models.FloatField()
+    monthly_installment_amount = models.FloatField()
+    
+        
     # years_of_residence= models.CharField( choices=STAY_CHOICES,
         
     # )

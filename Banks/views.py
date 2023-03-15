@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Bank,Application
+from .models import Bank,Application,Features
 from .forms import BankForm,ApplicationForm
 
 # Create your views here.
@@ -50,3 +50,12 @@ def applicant_create(request):
     }
    
     return render(request,"applicantForm.html",context)
+
+def features_view(request):
+    listings = Features.objects.all()
+    
+    context = {
+        "listings":listings
+    }
+   
+    return render(request,"loanFeatures.html",context)

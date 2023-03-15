@@ -51,13 +51,23 @@
 		</div>
 	</div>
 	<div class="explanation">
+		{% for listing in listings%}
 		<ul>
+			<li>A cash loan from R{{listing.min_amount}} up to R{{listing.max_amount}} </li>
 			<li>Lorem ipsum dolor sit amet.</li>
 			<li>Lorem ipsum dolor sit amet.</li>
 			<li>Lorem ipsum dolor sit amet.</li>
 			<li>Lorem ipsum dolor sit amet.</li>
 			<li>Lorem ipsum dolor sit amet.</li>
+			<li>Lorem ipsum dolor sit amet.</li>
+			<li>Inrest from as low as {{listing.low_interest_rate}} </li>
+			
+			
 		</ul>
+		<a href="Applicant">Visit</a>
+		{% endfor %}
 	</div>
 	
+	
 </html>
+

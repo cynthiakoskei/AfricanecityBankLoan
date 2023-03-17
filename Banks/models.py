@@ -58,6 +58,9 @@ class Features(models.Model):
     monthly_service_fee = models.FloatField()
     amount_payable = models.FloatField()
     monthly_installment_amount = models.FloatField()
+
+class Help(models.Model):
+    details = models.TextField()
     
         
   

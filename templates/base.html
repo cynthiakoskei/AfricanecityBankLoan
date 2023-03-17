@@ -35,15 +35,16 @@
 								<nav class="main_nav">
 									<ul class="d-flex flex-row align-items-start justify-content-start">
 										<li class="active"><a href="index.html">Home</a></li>
-										<li><a href="about.html">About us</a></li>
+										<li><a href="Banks/About Us/">About us</a></li>
 										<li><a href="#">Services</a></li>
-										<li><a href="news.html">News</a></li>
 										<li><a href="contact.html">Contact</a></li>
+                                        <li><a href="help.html">Help</a></li>
                                         {% if user.is_authenticated %}
                                         <li><a href="{% url 'logout' %}">Logout</a></li>
                                         {% else %}
                                         <li><a href="{% url 'login' %}">Login</a></li>
                                       {% endif %}
+                                      
 									</ul>
 								</nav>
 								

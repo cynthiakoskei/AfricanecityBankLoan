@@ -1,5 +1,5 @@
 from django.db import models
-from phone_field import PhoneField
+
 
 
 # Create your models here.
@@ -42,7 +42,7 @@ class Application(models.Model):
     last_name = models.CharField(max_length=100)
     birth_date = models.DateField()
     email = models.EmailField(max_length=254)
-    phoneNumber = PhoneField(blank=True, help_text='Contact phone number')
+    # phoneNumber = PhoneField(blank=True, help_text='Contact phone number')
     home_address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     state_province = models.CharField(max_length=100)
@@ -58,6 +58,17 @@ class Features(models.Model):
     monthly_service_fee = models.FloatField()
     amount_payable = models.FloatField()
     monthly_installment_amount = models.FloatField()
+
+class Help(models.Model):
+    details = models.TextField()
     
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=254)
+    message = models.TextField()
+    
+           
+        
+
         
   

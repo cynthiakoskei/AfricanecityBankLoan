@@ -26,6 +26,11 @@
 		<!-- Header -->
 
 		<header class="header">
+            {% if user.is_authenticated %}
+            <h5>Welcome,{{user.username | upper}} </h5>
+            {% else %}
+            <h5>You are not logged in</h5>
+        {% endif %}
 			<div class="container">
 				<div class="row">
 					<div class="col">
@@ -34,7 +39,7 @@
 								<div class="logo"><a href="index.html">Africanecity Loan</a></div>
 								<nav class="main_nav">
 									<ul class="d-flex flex-row align-items-start justify-content-start">
-										<li class="active"><a href="index.html">Home</a></li>
+										<li class="active"><a href="">Home</a></li>
 										<li><a href="Banks/About Us/">About us</a></li>
 										<li><a href="#">Services</a></li>
 										<li><a href="Banks/Contact/">Contact</a></li>
@@ -69,11 +74,11 @@
 				</ul>
 			</div>
 		</header> 
-        {% if user.is_authenticated %}
+        {% comment %} {% if user.is_authenticated %}
             <h5>Welcome,{{user.username | upper}} </h5>
             {% else %}
             <h5>You are not logged in</h5>
-        {% endif %}
+        {% endif %} {% endcomment %}
 
     {% block content %}
 

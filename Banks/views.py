@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
-from .models import Bank,Application,Features,Help
-from .forms import BankForm,ApplicationForm
+from django.contrib import messages
+from django.core.mail import send_mail
+from django.conf import settings
+from .models import Bank,Application,Features,Help,Contact
+from .forms import BankForm,ApplicationForm,ContactForm
 
 # Create your views here.
 def bank_list(request):
@@ -68,3 +71,34 @@ def help(request):
     }
    
     return render(request,"help.html",context)
+
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Get the user's name, email, and message from the form data
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+
+            # Construct the email message
+            subject = f"{name} - Loan Application Inquiry"
+            from_email = email
+            to_email = [settings.DEFAULT_FROM_EMAIL]
+            message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+
+            # Send the email
+            send_mail(subject, message, from_email, to_email, fail_silently=False)
+
+            # Show a success message to the user
+            messages.success(request, 'Your message has been sent. We will get back to you soon.')
+
+            # Redirect the user back to the contact page
+            return redirect('/Banks/Contact/')
+    else:
+        # Create an empty form
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})
+

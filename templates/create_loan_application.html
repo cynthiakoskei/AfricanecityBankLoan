@@ -1,0 +1,61 @@
+{% comment %} 
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+<form method="post" enctype="multipart/form-data" class="text-center mt-5"  ALIGN='center' >
+    {%csrf_token%}
+    <!-- {% bootstrap_form form %} -->
+    {% for field in form %}
+    <div class="row col-md-3 mx-auto mb-3">
+       {{field}} {% if not field.field.required %}<span class="text-light w-25">(optional)</span>
+       {% endif %}
+    </div>
+ {% endfor %}
+    {% bootstrap_button button_type="submit" content="Submit" %}
+</form> {% endcomment %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create a New Loan Application</title>
+  <style>
+    form {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    input[type=text], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button[type=submit]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h2>Create a New Loan Application</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

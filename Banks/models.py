@@ -20,7 +20,7 @@ class Application(models.Model):
     house_buying = 'house_buying'
     home_improment = 'home_improment'
     investment = 'investment'
-    educucation = 'educucation'
+    education = 'education'
     other = 'other'
 
     
@@ -29,12 +29,12 @@ class Application(models.Model):
         (house_buying ,'house_buying'),
         (home_improment ,'home_improment'),
         (investment , 'investment'),
-        (educucation ,'educucation'),
+        (education ,'education'),
         ( other , 'other'),
             
     ]
    
-    disired_loan =  models.FloatField()
+    desired_loan =  models.FloatField()
     annual_income =  models.FloatField()
     loan_will_be_used_for = models.CharField(max_length = 250, choices=LOAN_CHOICES,
         default=business_launching,

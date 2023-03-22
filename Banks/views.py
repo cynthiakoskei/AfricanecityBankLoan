@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
@@ -41,18 +41,18 @@ def about(request):
    
     return render(request,"about.html",context)
 
-def applicant_create(request):
-    form = ApplicationForm()
-    if request.method == "POST":
-        form = ApplicationForm(request.POST,request.FILES)
-        if form.is_valid():
-            form.save()
+# def applicant_create(request):
+#     form = ApplicationForm()
+#     if request.method == "POST":
+#         form = ApplicationForm(request.POST,request.FILES)
+#         if form.is_valid():
+#             form.save()
     
-    context = {
-        "form":form
-    }
+#     context = {
+#         "form":form
+#     }
    
-    return render(request,"applicantForm.html",context)
+#     return render(request,"applicantForm.html",context)
 
 def features_view(request):
     listings = Features.objects.all()
@@ -102,3 +102,40 @@ def contact(request):
 
     return render(request, 'contact.html', {'form': form})
 
+#create
+def create_loan_application(request):
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST)
+        if form.is_valid():
+            loan_application = form.save(commit=False)
+            loan_application.user = request.user
+            loan_application.save()
+            return redirect('loan_detail', pk=loan_application.pk)
+    else:
+        form = ApplicationForm()
+    return render(request, 'create_loan_application.html', {'form': form})
+
+#read
+def loan_detail(request, pk):
+    loan_application = get_object_or_404(ApplicationForm, pk=pk)
+    return render(request, 'loan_detail.html', {'loan_application': loan_application})
+
+#update
+def update_loan_application(request, pk):
+    loan_application = get_object_or_404(ApplicationForm, pk=pk)
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST, instance=loan_application)
+        if form.is_valid():
+            loan_application = form.save(commit=False)
+            loan_application.user = request.user
+            loan_application.save()
+            return redirect('loan_detail', pk=loan_application.pk)
+    else:
+        form = ApplicationForm(instance=loan_application)
+    return render(request, 'update_loan_application.html', {'form': form})
+
+#delete
+def delete_loan_application(request, pk):
+    loan_application = get_object_or_404(ApplicationForm, pk=pk)
+    loan_application.delete()
+    return redirect('')

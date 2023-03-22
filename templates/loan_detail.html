@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loan Application Details</title>
+  <style>
+    p {
+      margin: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Loan Application Details</h2>
+  <p>Application ID: {{ loan_application.pk }}</p>
+  <p>Application Date: {{ loan_application.date_created }}</p>
+  <p>User: {{ loan_application.user }}</p>
+  <p>Loan Amount: {{ loan_application.loan_amount }}</p>
+  <p>Interest Rate: {{ loan_application.interest_rate }}</p>
+  <p>Loan Term: {{ loan_application.loan_term }}</p>
+</body>
+</html>

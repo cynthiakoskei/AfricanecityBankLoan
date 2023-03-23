@@ -51,7 +51,7 @@ class Application(models.Model):
     postal_code = models.CharField( max_length=6)
 
     def __str__(self):
-        return self.firstname
+        return self.first_name
     
     class Meta:{
         'birth_date': ('D.O.B')

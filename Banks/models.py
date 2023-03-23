@@ -1,5 +1,6 @@
 from django.db import models
-
+from phone_field import PhoneField
+from django.forms.widgets import DateInput
 
 
 
@@ -41,13 +42,27 @@ class Application(models.Model):
     )
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    birth_date = models.DateField()
+    birth_date = models.DateField(null="False")
     email = models.EmailField(max_length=254)
-    # phoneNumber = PhoneField(blank=True, help_text='Contact phone number')
+    phoneNumber = PhoneField(blank=True, help_text='Contact phone number')
     home_address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     state_province = models.CharField(max_length=100)
     postal_code = models.CharField( max_length=6)
+
+    def __str__(self):
+        return self.firstname
+    
+    class Meta:{
+        'birth_date': ('D.O.B')
+    }
+    
+    widgets = {
+        'birth_date': DateInput(attrs={'type': 'date'})
+    }
+
+
+
     
 class Features(models.Model):
     min_amount = models.FloatField()

@@ -74,6 +74,10 @@ class Features(models.Model):
     monthly_service_fee = models.FloatField()
     amount_payable = models.FloatField()
     monthly_installment_amount = models.FloatField()
+    bankName = models.ForeignKey(Bank, null=True,on_delete=models.CASCADE)
+
+    def _str_(self): 
+        return str(self.bankName)
 
 class Help(models.Model):
     details = models.TextField()

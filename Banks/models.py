@@ -67,8 +67,8 @@ class Application(models.Model):
 class Features(models.Model):
     min_amount = models.FloatField()
     max_amount = models.FloatField()
-    low_interest_rate =  models.DecimalField(max_digits=3, decimal_places=2)
-    illustration_rate = models.DecimalField(max_digits=3, decimal_places=2)
+    low_interest_rate =  models.DecimalField(max_digits=4, decimal_places=2)
+    illustration_rate = models.DecimalField(max_digits=4, decimal_places=2)
     amount_borrowed = models.FloatField()
     initiation_fee = models.FloatField()
     monthly_service_fee = models.FloatField()

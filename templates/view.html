@@ -3,65 +3,29 @@
 <html>
 <head>
     <title> Bank Views </title>
-    <style>
-		section {
-			text-align: center;
-			padding: 2rem 7%;
-		}
-		section  h2{
-			text-transform: uppercase;
-		}
-		.products{
-			min-height: 100vh;
-			display: flex;
-			align-items: center;
-			flex-wrap: wrap;
-			background: whitesmoke;
-		}
-		.products .content li{
-			padding: .5rem 2.5rem;
-			list-style: none;
-			max-width: 70rem;
-			flex: 1 1 45rem;
-			color: #13131a;
-			background: whitesmoke;
-			border: .1rem solid rgba(19, 18, 18, 0.3);
-		}
-		.products .content li a{
-			text-decoration: none;
-			color: #fff;
-			background: rgb(4, 5, 39);
-			margin-top: 1rem;
-			display: inline-block;
-			padding: .9rem 2.5rem;
-			font-size: 1.5rem;
-			cursor: pointer;
-			margin-bottom: 1rem;
-		}
-        .products .content li h3{
-            text-transform: capitalize;
-			font-size: 1.6rem;
-        }
-		.products .content p{
-			font-size: 1.2rem;
-		}
-		.products .content p span{
-			color: red;
-		}
-		
-		.products .content li img {
-			height: 12rem;
-			border-radius: 50%;
-			background: grey;
-			width: 12rem;
-		}
-    </style>
+    <link rel="stylesheet" href="/static/styles/navbar.css">
+    <link rel="stylesheet" href="/static/styles/vews.css">
 </head>
 
 <body>
-    
-
-    <main>
+	<!-- nav/menu -->
+    <nav class="navbar">
+        <a class="logo">Africanecity</a>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
+        <!-- Menu-->
+        <ul class="menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Banks/About Us/">About us</a></li>
+            <li><a href="/Banks/Contact/">Contact</a></li>
+            <li><a href="/Banks/Help/">Help</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
         <section class="productus"> 
 			<h2> Recomendations </h2>
 			<div class="products">
@@ -79,10 +43,11 @@
 				{% endfor %}
 			</div>
         </section>
-    </main>
-    
-  
-
+		<!-- footer -->
+        <footer>
+            <p>PLP Group 24 Project | All rights reserved. 2022 -
+                <script>document.write(new Date().getFullYear());</script>
+            </p>
+        </footer>
 </body>
-
 </html>

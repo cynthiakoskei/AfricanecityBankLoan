@@ -1,47 +1,27 @@
-
-{% extends 'base.html' %}
-
-{% block content %}
 {% load static %}
 <head>
-	<link href="{% static 'css/index.css' %}" rel="stylesheet">
+	<link href="{% static 'css/index.css'%}" rel="stylesheet">
+	<link rel="stylesheet" href="/static/styles/navbar.css">
 </head>
 
-		<div class="menu">
-			<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-				<div class="menu_logo"><a href="index.html">Travello</a></div>
-				<div class="menu_close_container ml-auto">
-					<div class="menu_close">
-						<div></div>
-						<div></div>
-					</div>
-				</div>
-			</div>
-			<div class="menu_content">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About us</a></li>
-					<li><a href="#">Services</a></li>
-					<li><a href="news.html">News</a></li>
-					<li><a href="contact.html">Contact</a></li>
-					{% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                    {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    {% endif %}
-				</ul>
-			</div>
-			<div class="menu_social">
-				<ul class="d-flex flex-row align-items-start justify-content-start">
-					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-				</ul>
-			</div>
-		</div>
+		<!-- nav/menu -->
+	<nav class="navbar">
+		<a class="logo">Africanecity</a>
+		<input class="menu-btn" type="checkbox" id="menu-btn" />
+		<label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
+		<!-- Menu-->
+		<ul class="menu">
+			<li><a href="/">Home</a></li>
+			<li><a href="/Banks/About Us/">About us</a></li>
+			<li><a href="/Banks/Contact/">Contact</a></li>
+			<li><a href="/Banks/Help/">Help</a></li>
+			{% if user.is_authenticated %}
+			<li><a href="{% url 'logout' %}">Logout</a></li>
+			{% else %}
+			<li><a href="{% url 'login' %}">Login</a></li>
+		  {% endif %}
+		</ul>
+	</nav>
 
 		<!-- Home -->
 
@@ -146,7 +126,3 @@
 				</div>
 			</div>
 		</div>
-		
-
-{% endblock %}		
-

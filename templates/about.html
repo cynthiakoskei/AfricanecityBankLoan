@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Africanecity - About</title>
+	<title>About - CBS</title>
 	<link rel="stylesheet" href="/static/styles/about.css">
 	<link rel="stylesheet" href="/static/styles/navbar.css">
 </head>
@@ -13,7 +13,7 @@
 <body>
 	<!-- nav/menu -->
 	<nav class="navbar">
-		<a class="logo">Africanecity</a>
+		<img class="logo" id="logo" src="/static/logo.png" alt="Continental Banking Site Logo" style="width: 150px; height: 50px;">
 		<input class="menu-btn" type="checkbox" id="menu-btn" />
 		<label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
 		<!-- Menu-->
@@ -22,13 +22,14 @@
 			<li><a href="/Banks/About Us/">About us</a></li>
 			<li><a href="/Banks/Contact/">Contact</a></li>
 			<li><a href="/Banks/Help/">Help</a></li>
-			{% if user.is_authenticated %}
+			<!-- {% if user.is_authenticated %}
 			<li><a href="{% url 'logout' %}">Logout</a></li>
 			{% else %}
 			<li><a href="{% url 'login' %}">Login</a></li>
-		  {% endif %}
+		  {% endif %} -->
 		</ul>
 	</nav>
+
 	<!--body-->
 	<section class="about" id="about">
 		<div class="container">
@@ -46,7 +47,7 @@
 			<p>If you have any questions or feedback about our platform, please feel free to contact us at <a
 					href="mailto:info@loanscompare.com">plpgroup24@gmail.com</a>.</p>
 
-			<p>Thank you for using Africanecity!</p>
+			<p>Thank you for using CBS!</p>
 		</div>
 	</section>
 

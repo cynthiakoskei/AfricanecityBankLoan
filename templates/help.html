@@ -13,7 +13,7 @@
 <body>
   <!-- nav/menu -->
   <nav class="navbar">
-    <a class="logo">Africanecity</a>
+    <img class="logo" id="logo" src="/static/logo.png" alt="Continental Banking Site Logo" style="width: 150px; height: 50px;">
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
     <!-- Menu-->
@@ -22,11 +22,6 @@
       <li><a href="/Banks/About Us/">About us</a></li>
       <li><a href="/Banks/Contact/">Contact</a></li>
       <li><a href="/Banks/Help/">Help</a></li>
-      {% if user.is_authenticated %}
-      <li><a href="{% url 'logout' %}">Logout</a></li>
-      {% else %}
-      <li><a href="{% url 'login' %}">Login</a></li>
-      {% endif %}
     </ul>
   </nav>
 

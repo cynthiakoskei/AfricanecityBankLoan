@@ -1,12 +1,21 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-	<link href="{% static 'css/index.css'%}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continental Banking Site</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
 	<link rel="stylesheet" href="/static/styles/navbar.css">
+
 </head>
 
-		<!-- nav/menu -->
+<body>
+    <!-- nav/menu -->
 	<nav class="navbar">
-		<a class="logo">Africanecity</a>
+		<img class="logo" id="logo" src="{% static 'logo.png' %}" alt="Continental Banking Site Logo">
 		<input class="menu-btn" type="checkbox" id="menu-btn" />
 		<label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
 		<!-- Menu-->
@@ -15,114 +24,34 @@
 			<li><a href="/Banks/About Us/">About us</a></li>
 			<li><a href="/Banks/Contact/">Contact</a></li>
 			<li><a href="/Banks/Help/">Help</a></li>
-			{% if user.is_authenticated %}
+			<!-- {% if user.is_authenticated %}
 			<li><a href="{% url 'logout' %}">Logout</a></li>
 			{% else %}
 			<li><a href="{% url 'login' %}">Login</a></li>
-		  {% endif %}
+		  {% endif %} -->
 		</ul>
 	</nav>
+	<!-- end of nav/menu -->
 
-		<!-- Home -->
+    <!-- home section starts here -->
+    <section class="home" id="home">
+        <div class="content">
+            <h1>Continental <h2>Banking Site</h2></h1>
+            <p>Making banking easier across the African continent. Check if you qualify for a loan, find out which bank offers the best rates, and determine how much you can borrow – all without any paperwork or waiting in line. Get everything done from the comfort of your own home.</p>
+            <p>Before you get started, learn how it works by clicking the button below.</p>
+			<a href="/Banks/Help/" class="btn">Help</a>
+        </div>
+        <div class="form">
 
-		<div class="home">
+        </div>
+    </section>
+    <!-- home section ends here -->
+	<!-- footer -->
+	<footer>
+		<p>PLP Group 24 Project | All rights reserved. 2022 -
+			<script>document.write(new Date().getFullYear());</script>
+		</p>
+	</footer>
+</body>
 
-			<!-- Home Slider -->
-			<div class="home_slider_container">
-				<div class="owl-carousel owl-theme home_slider">
-
-					<!-- Slide -->
-					<div class="owl-item">
-						<div class="background_image"></div>
-						<div class="home_slider_content_container">
-							<div class="container">
-								<div class="row">
-									<div class="col">
-										<div class="home_slider_content">
-											<div class="home_title">
-												<h2>Let us take you away</h2>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Slide -->
-					<div class="owl-item">
-						<div class="background_image"></div>
-						<div class="home_slider_content_container">
-							<div class="container">
-								<div class="row">
-									<div class="col">
-										<div class="home_slider_content">
-											<div class="home_title">
-												<h2>Let us take you away</h2>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Slide -->
-					<div class="owl-item">
-						<div class="background_image"></div>
-						<div class="home_slider_content_container">
-							<div class="container">
-								<div class="row">
-									<div class="col">
-										<div class="home_slider_content">
-											<div class="home_title">
-												<h2>Let us take you away</h2>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-				<!-- <div class="home_page_nav">
-					<ul class="d-flex flex-column align-items-end justify-content-end">
-						<li><a href="#" data-scroll-to="#destinations">Offers<span>01</span></a></li>
-						<li><a href="#" data-scroll-to="#testimonials">Testimonials<span>02</span></a></li>
-						<li><a href="#" data-scroll-to="#news">Latest<span>03</span></a></li>
-					</ul>
-				</div> -->
-			</div>
-		</div>
-
-		<!-- Search -->
-
-		<div class="home_search">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="home_search_container">
-							<div class="home_search_title">Search for your loan</div>
-							<div class="home_search_content">
-								<form action="#" class="home_search_form" id="home_search_form">
-									<div
-										class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-										<input type="text" class="search_input search_input_1" placeholder="Net salary"
-											required="required">
-										<input type="text" class="search_input search_input_2" placeholder="Country"
-											required="required">
-										<input type="text" class="search_input search_input_3" placeholder="city"
-											required="required">
-										<input type="text" class="search_input search_input_4" placeholder="Town"
-											required="required">
-											<button class="home_search_button"><a href="/Banks/Views/">search</a></button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+</html>

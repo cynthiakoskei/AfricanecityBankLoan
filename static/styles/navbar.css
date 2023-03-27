@@ -1,16 +1,12 @@
 
 /* navbar styling*/
-.navbar .logo{
-    float: left;
-    display: block;
-    font-size: 20px;
-    padding: 20px;
-    color:white;
-    text-transform: uppercase;
-    border-radius: 6px;
+.navbar img{
+    width: 200px;
+    height: 50px;
+    margin-left: 22px;
 }
 .navbar{
-    background-color: rgba(128, 128, 128, 0.438);
+    background-color: rgba(41, 103, 185, 0.76);;
     position: fixed;
     width: 100%;
     z-index: 3;
@@ -21,23 +17,25 @@
     list-style: none;
     overflow: hidden;
     text-align: center;
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
 .navbar ul a{
     color: white;
     display: block;
-    padding: 20px;
-    font-size: 17px;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
     text-transform: uppercase;
-    border-radius: 6px;
+    border-radius: 4px;
     transition: .5s;
 	text-decoration: none;
 }
 .navbar ul a:hover{
-    color:rgb(4, 78, 75);
+    color:lightgreen;
     transition: .5s;
     font-size: 22px;
+    font-weight: normal;
 }
 
 .navbar .menu{
@@ -52,7 +50,7 @@
     cursor: pointer;
 }
 .navbar .menu-icon .nav-icon{
-    background: rgb(1, 255, 242);
+    background: white;
     display: block;
     height: 2px;
     width: 18px;
@@ -60,7 +58,7 @@
     transition: background .2s ease-out;
 }
 .navbar .menu-icon .nav-icon:before{
-    background:rgb(1, 255, 242);
+    background: white;
     content: "";
     display: block;
      height: 100%;
@@ -70,7 +68,7 @@
      top: 5px;
 }
 .navbar .menu-icon .nav-icon:after{
-    background: rgb(1, 255, 242);
+    background: white;
     content: "";
     display: block;
      height: 100%;
@@ -125,7 +123,6 @@ footer{
     color: rgba(255, 255, 255, 0.678);
     text-align: center;
     position: bottom;
-    font-weight: bold;
 }
 footer p{
     font-size: 1em;

@@ -1,79 +1,67 @@
-{% load static %}
-
+<!DOCTYPE html>
 <html>
+<head>
+	<title>Loan Features</title>
 	<style>
-		*{
-			padding: 10px 3%;
-			text-transform: capitalize;
-			align-items: center;
-			font-family: Arial, Helvetica, sans-serif;
-		}
-		.form{
-			align-items: center;
-			justify-content: space-around;
-			background: rgba(217, 214, 214, 0.76);
-		}
-		.form h1{
-			color: rgb(4, 5, 39);
-			font-size: 2.2rem;
-			font-weight: 550;
-		}
-		img{
+		table {
+			border-collapse: collapse;
 			width: 100%;
-			height: 15rem;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			text-align: center;
 		}
-		.form .content{
-			box-sizing: border-box;
-			background: white;
+		table th {
+			background-color: #ccc;
+			padding: 10px;
+			border: 1px solid #ddd;
 		}
-		.form .content h3{
-			font-size: 1.7rem;
+		table td {
+			padding: 10px;
+			border: 1px solid #ddd;
 		}
-		.explanation ul li{
-			list-style-type: none;
-			text-decoration: none;
+		bank_name {
+			rowspan: 9;
+			font-weight: bold:
+			font-size: 20px;
 		}
-		.explanation ul li::before {
-			content: "\2022";
-			color:  rgb(4, 5, 39);
-			font-size: 18px;
-			margin-right: 5px;
-		}
-		
 	</style>
-	<div class="form">
-		<center><h1>africanecity loan application</h1></center>
-		<div class="image">
-			<img src="{% static 'images/camera.svg' %}" alt="" srcset="">
-		</div>
-		<div class="content">
-			<center><h3>africanecity loan features & benefits</h3></center>
-		</div>
-	</div>
-	<div class="explanation">
-		{% for listing in listings%}
-		<ul>
-			<li>A cash loan from R{{listing.min_amount}} up to R{{listing.max_amount}} </li>
-			<li>Lorem ipsum dolor sit amet.</li>
-			<li>Lorem ipsum dolor sit amet.</li>
-			<li>Lorem ipsum dolor sit amet.</li>
-			<li>Lorem ipsum dolor sit amet.</li>
-			<li>Lorem ipsum dolor sit amet.</li>
-			<li>Lorem ipsum dolor sit amet.</li>
-			<li>Inrest from as low as {{listing.low_interest_rate}} </li>
-			<li>An illustration example of a loan at an an <br>
-				 interest rate of {{listing.illustration_rate}} would be:Loan <br>
-				amount of R{{listing.amount_borrowed}} borrowed for 24 months<br>
-			Annual interest Rate:{{listing.illustration_rate}}.Initiation fee:<br>
-			R{{listing.initiation_fee}}.Monthly service fee:R {{listing.monthly_service_fee}}Total<br>
-		Amount payable:R{{listing.amount_payable}}.Monthly<br>
-		Instalment amount:R{{listing.monthly_installment_amount}}</ul>
-			
-		</ul>
-		<a href="/Banks/Applicant/">Visit</a>
-		{% endfor %}
-	</div>
+</head>
+<body>
 	
-	
+	<table>
+		<thead>
+			{% for feature in features %}
+			<tr>
+				<th class='bank_name'>{{ feature.bank_name }}</th>
+			</tr>
+			{% endfor %}
+			<tr>
+				<th>Minimum Amount</th>
+				<th>Maximum Amount</th>
+				<th>Low Interest Rate</th>
+				<th>Illustration Rate</th>
+				<th>Amount Borrowed</th>
+				<th>Initiation Fee</th>
+				<th>Monthly Service Fee</th>
+				<th>Amount Payable</th>
+				<th>Monthly Installment Amount</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for feature in features %}
+			<tr>
+				<td>{{ feature.min_amount }}</td>
+				<td>{{ feature.max_amount }}</td>
+				<td>{{ feature.low_interest_rate }}</td>
+				<td>{{ feature.illustration_rate }}</td>
+				<td>{{ feature.amount_borrowed }}</td>
+				<td>{{ feature.initiation_fee }}</td>
+				<td>{{ feature.monthly_service_fee }}</td>
+				<td>{{ feature.amount_payable }}</td>
+				<td>{{ feature.monthly_installment_amount }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
 </html>
-

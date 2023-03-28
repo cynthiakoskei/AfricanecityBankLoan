@@ -77,7 +77,7 @@ class Features(models.Model):
     bank_name = models.ForeignKey(Bank, null=True,on_delete=models.CASCADE)
 
     def _str_(self): 
-        return str(self.bankName)
+        return str(self.bank_name)
 
 class Help(models.Model):
     details = models.TextField()

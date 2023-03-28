@@ -41,9 +41,9 @@ def about(request):
    
     return render(request,"about.html",context)
 
-def feature_detail(request, bankName_id):
-    bank = Bank.objects.get(pk=bankName_id)
-    features = Features.objects.filter(bankName=bank)
+def feature_detail(request, bank_name_id):
+    bank = Bank.objects.get(pk=bank_name_id)
+    features = Features.objects.filter(bank_name=bank)
     return render(request, 'loanFeatures.html', {'bank': bank, 'features': features})
 
 

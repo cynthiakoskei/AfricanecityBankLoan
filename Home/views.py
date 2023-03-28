@@ -1,10 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Loan_Request
 from .forms import LoanRequestForm
 
 # Create your views here.
-def index(request):
-    return render(request, 'index.html')
+
 
 
 def loan_create(request):
@@ -13,8 +12,9 @@ def loan_create(request):
         form = LoanRequestForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('bank_list')
     
     context = {
         "form":form
     }
-    return render(request, 'test.html', context)
+    return render(request, 'index.html', context)

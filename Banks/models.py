@@ -7,19 +7,19 @@ from django.forms.widgets import DateInput
 # Create your models here.
 
 class Bank(models.Model):
-    bankName= models.CharField(max_length=100)
+    bank_name= models.CharField(max_length=100)
     image = models.ImageField()
-    interestRate = models.DecimalField(max_digits=5, decimal_places=2)
+    interest_rate = models.DecimalField(max_digits=5, decimal_places=2)
       
     def __str__(self): 
-        return self.bankName
+        return self.bank_name
     
 
 class Application(models.Model):
     
     business_launching = 'business_launching'
     house_buying = 'house_buying'
-    home_improment = 'home_improment'
+    home_improvement = 'home_improvement'
     investment = 'investment'
     education = 'education'
     other = 'other'
@@ -28,7 +28,7 @@ class Application(models.Model):
     LOAN_CHOICES = [
         ( business_launching,'business_launching'),
         (house_buying ,'house_buying'),
-        (home_improment ,'home_improment'),
+        (home_improvement ,'home_improvement'),
         (investment , 'investment'),
         (education ,'education'),
         ( other , 'other'),
@@ -74,7 +74,7 @@ class Features(models.Model):
     monthly_service_fee = models.FloatField()
     amount_payable = models.FloatField()
     monthly_installment_amount = models.FloatField()
-    bankName = models.ForeignKey(Bank, null=True,on_delete=models.CASCADE)
+    bank_name = models.ForeignKey(Bank, null=True,on_delete=models.CASCADE)
 
     def _str_(self): 
         return str(self.bankName)

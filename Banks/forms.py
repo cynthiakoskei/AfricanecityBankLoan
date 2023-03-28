@@ -5,9 +5,9 @@ class BankForm(forms.ModelForm):
     class Meta:
         model =Bank
         fields =[
-            "bankName",
+            "bank_name",
             "image",
-            "interestRate", 
+            "interest_rate", 
         ]
 
 

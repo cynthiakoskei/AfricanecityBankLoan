@@ -10,6 +10,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
 	<link rel="stylesheet" href="/static/styles/navbar.css">
 
+	
+	
+	
+
 </head>
 
 <body>
@@ -42,6 +46,18 @@
 			<a href="/Banks/Help/" class="btn">Help</a>
         </div>
         <div class="form">
+			<h1>Hello World</h1>
+			<p>Welcome to the Africanicity App</p>
+			<p>We help connect Borrowers and Lenders</p>
+			<p>No paperwork!</p>
+			<p>No Ques!</p>
+			<p>No Hustle!</p>
+            <p>Saving you Time, Money and Effort</p>
+			<form method="post" enctype="multipart/form-data">
+				{%csrf_token%}
+				{{form.as_p}}
+				<button type="submit">Submit</button>
+			</form>
 
         </div>
     </section>

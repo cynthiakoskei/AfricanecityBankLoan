@@ -12,4 +12,3 @@ urlpatterns = [
     path('Loan Detail/<int:pk>/',views.loan_detail, name="loan_detail"),
 ]
 
-#<int:pk>/

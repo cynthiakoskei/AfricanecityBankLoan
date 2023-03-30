@@ -12,7 +12,7 @@ def loan_create(request):
         form = LoanRequestForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('bank_list')
+            return redirect('personal_expenditure')
     
     context = {
         "form":form

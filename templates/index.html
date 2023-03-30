@@ -1,4 +1,9 @@
 {% load static %}
+{% load crispy_forms_tags %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,11 +14,6 @@
     <title>Continental Banking Site</title>
     <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
 	<link rel="stylesheet" href="/static/styles/navbar.css">
-
-	
-	
-	
-
 </head>
 
 <body>
@@ -28,11 +28,6 @@
 			<li><a href="/Banks/About Us/">About us</a></li>
 			<li><a href="/Banks/Contact/">Contact</a></li>
 			<li><a href="/Banks/Help/">Help</a></li>
-			<!-- {% if user.is_authenticated %}
-			<li><a href="{% url 'logout' %}">Logout</a></li>
-			{% else %}
-			<li><a href="{% url 'login' %}">Login</a></li>
-		  {% endif %} -->
 		</ul>
 	</nav>
 	<!-- end of nav/menu -->
@@ -41,24 +36,36 @@
     <section class="home" id="home">
         <div class="content">
             <h1>Continental <h2>Banking Site</h2></h1>
-            <p>Making banking easier across the African continent. Check if you qualify for a loan, find out which bank offers the best rates, and determine how much you can borrow – all without any paperwork or waiting in line. Get everything done from the comfort of your own home.</p>
-            <p>Before you get started, learn how it works by clicking the button below.</p>
+            <p>Making Banking Easier Across The African Continent. Check If You Qualify For A Loan, Find Out Which Bank Offers The Best Rates, And Determine How Much You Can Borrow – All Without Any Hassle Of Going Through Paperwork Or Waiting In Queues.</p>
+            <p>Get Everything Done From The Comfort Of Your Own Home. Before you get started, learn how it works by clicking the button below.</p>
 			<a href="/Banks/Help/" class="btn">Help</a>
         </div>
         <div class="form">
-			<h1>Hello World</h1>
-			<p>Welcome to the Africanicity App</p>
-			<p>We help connect Borrowers and Lenders</p>
-			<p>No paperwork!</p>
-			<p>No Ques!</p>
-			<p>No Hustle!</p>
-            <p>Saving you Time, Money and Effort</p>
-			<form method="post" enctype="multipart/form-data">
+			<h2>Calculate your loan amount here</h2>
+			<form method="post"  class="card p-3 mt-5" autocomplete="off">
 				{%csrf_token%}
-				{{form.as_p}}
+					<div class="row">
+						<div class="col-6">
+							{{ form.first_name|as_crispy_field }}
+						</div>
+						<div clas="col-6">
+							{{ form.last_name|as_crispy_field }}
+						</div>
+						<div class="col-6">
+							{{ form.id_number|as_crispy_field }}
+						</div>
+						<div class="col-6">
+							{{ form.contact_details|as_crispy_field }}
+						</div>
+						<div class="col-6">
+							{{ form.email_adress|as_crispy_field }}
+						</div>
+						<div class="col-6">
+							{{ form.salary|as_crispy_field }}
+						</div>
+					</div>
 				<button type="submit">Submit</button>
 			</form>
-
         </div>
     </section>
     <!-- home section ends here -->

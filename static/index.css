@@ -4,7 +4,8 @@
     --bg: green;
     --border: .1rem solid rgba(255, 255, 255, .3);
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -14,7 +15,6 @@
     transition: .2s linear;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
 
 html {
     font-size: 62.5%;
@@ -62,6 +62,7 @@ button,
     color: black;
     font-weight: bold;
 }
+
 .home {
     min-height: 100vh;
     display: flex;
@@ -84,7 +85,7 @@ button,
     color: var(--main-color);
 }
 
-.home .content h2{
+.home .content h2 {
     font-size: 4rem;
     text-transform: uppercase;
     color: var(--main-color);
@@ -100,14 +101,24 @@ button,
 
 .home .form {
     flex: 1 1 45rem;
-    background-color: rgba(41, 103, 185, 0.76);
-    padding: 7%;
+    background-color: rgba(210, 210, 210, 0.6);
+    padding: 2%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: 35vh;
     margin: auto;
     height: 80vh;
     margin-top: 15vh;
     border-radius: 1.5rem;
+}
+
+.home .form h2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.home .form form {
+    background-color: rgba(210, 210, 210, 0.4);
+    font-weight: bold;
 }
 
 @media(max-width:991px) {

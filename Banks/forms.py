@@ -1,5 +1,5 @@
 from django import forms
-from .models import Bank,Application,Contact
+from .models import Bank,Application,Contact,Personal_expenditure
 
 class BankForm(forms.ModelForm):
     class Meta:
@@ -27,3 +27,7 @@ class ContactForm(forms.ModelForm):
             "message", 
         ]
 
+class expenditureForm(forms.ModelForm):
+    class Meta:
+        model = Personal_expenditure
+        fields = '__all__'

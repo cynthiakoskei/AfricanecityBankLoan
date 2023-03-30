@@ -14,4 +14,3 @@ urlpatterns = [
     path('Calculator/', views.loan_calculator, name='loan_calculator'),
 ]
 
-#<int:pk>/

@@ -10,8 +10,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Bank(models.Model):
     bank_name= models.CharField(max_length=100)
     image = models.ImageField()
-    interest_rate = models.DecimalField(max_digits=5, decimal_places=2)
-      
+    interest_rate = models.FloatField()
+    min_loan_amount = models.IntegerField()
+    max_loan_amount = models.IntegerField()
     def __str__(self): 
         return self.bank_name
     
@@ -79,6 +80,19 @@ class Features(models.Model):
 
     def _str_(self): 
         return str(self.bank_name)
+class Loan(models.Model):
+    bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
+    initiation_fee = models.FloatField()
+    service_fee = models.FloatField()
+    illustration_rate = models.FloatField()
+    loan_amount = models.IntegerField()
+    loan_period = models.IntegerField()
+    total_amount_payable = models.FloatField(null=True, blank=True)
+    monthly_installments = models.FloatField(null=True, blank=True)
+    total_amount = models.FloatField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.bank.bank_name} - {self.loan_amount}"
 
 class Help(models.Model):
     details = models.TextField()

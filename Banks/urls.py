@@ -10,5 +10,6 @@ urlpatterns = [
     path('Help/',views.help, name="help"),
     path('Contact/',views.contact, name="contact"),
     path('Loan Detail/<int:pk>/',views.loan_detail, name="loan_detail"),
+    path('Expenditure/', views.expenditure_form_view, name = 'personal_expenditure')
 ]
 

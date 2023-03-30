@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Bank,Features, Application
+from .models import Bank,Features, Application, Personal_expenditure
 # Register your models here.
 
 admin.site.register(Bank)
@@ -11,4 +11,5 @@ class ApplicationAdmin(admin.ModelAdmin):
     list_per_page = 10
 admin.site.register(Application, ApplicationAdmin)
 
-
+# Register your models here.
+admin.site.register(Personal_expenditure)

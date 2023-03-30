@@ -1,0 +1,72 @@
+{% load crispy_forms_tags %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+{% block content %}
+<div class="container mt-3" style="width: 95%; font-size: 14px">
+    <form method="POST" class="card p-3 mt-5" autocomplete="off">
+        {% csrf_token %}
+        <title> Loan Application Form</title>
+        <center><h1> LOAN APPLICATION FORM</h1><center>
+        <div class="row">
+            <div class="col-6">
+                {{ form.loan_request|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.salary|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.rent_or_mortgage_expense|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.property_taxes|as_crispy_field }}
+            </div>
+            <div clas="col-6">
+                {{ form.home_owner_insurance|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.water|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.electricity|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.household_supplies|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.dining_out|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.takeouts|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.personal_care|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.doctors_visits|as_crispy_field }}
+            </div>
+			<div class="col-6">
+                {{ form.insurance_premiums|as_crispy_field }}
+            </div>
+			<div class="col-6">
+                {{ form.entertainment|as_crispy_field }}
+            </div>
+			<div class="col-6">
+                {{ form.credit_cards|as_crispy_field }}
+            </div>
+			<div class="col-6">
+                {{ form.loan_debts|as_crispy_field }}
+            </div>
+			<div class="col-6">
+                {{ form.childcare|as_crispy_field }}
+            </div>
+			<div class="col-6">
+                {{ form.miscellaneous_expense|as_crispy_field }}
+            </div>
+        </div>        
+    <center><button type="submit" class="btn btn-primary mt-3" style="width: 45%">Submit</button></center>
+    </form> 
+</div>
+{% endblock %}

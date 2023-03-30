@@ -1,7 +1,8 @@
 from django.db import models
 from phone_field import PhoneField
 from django.forms.widgets import DateInput
-
+from Home.models import Loan_Request
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
@@ -87,9 +88,44 @@ class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=254)
     message = models.TextField()
+
+
+class Personal_expenditure(models.Model):
+    loan_request = models.ForeignKey(Loan_Request, on_delete=models.CASCADE, default=10000)
+   
+    # Income
+    salary = models.PositiveIntegerField(default=10000, validators=[MinValueValidator(10000)])
+
+    # housing_expense
+    rent_or_mortgage_expense = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+    property_taxes = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+    home_owner_insurance = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
     
-           
-        
+    # Utilities
+    water = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+    electricity = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+    household_supplies = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+    dining_out = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+    takeouts = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+
+    personal_care = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+
+    # medical_expenses 
+    doctors_visits = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+    insurance_premiums = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+
+    entertainment = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+
+    #Debt_payment
+    credit_cards = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+    loan_debts = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+
+    childcare = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+    miscellaneous_expense = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
+
+    def update_salary(self):
+        self.salary = self.loan_request.salary
+        self.save()      
 
         
   

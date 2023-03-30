@@ -9,6 +9,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Bank(models.Model):
     bank_name= models.CharField(max_length=100)
+    bank_url = models.URLField(default="https://www.absa.africa/", max_length=200)
     image = models.ImageField()
     interest_rate = models.FloatField()
     min_loan_amount = models.IntegerField()

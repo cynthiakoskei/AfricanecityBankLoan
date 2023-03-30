@@ -2,8 +2,8 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Bank,Application,Features,Help,Contact,Personal_expenditure
-from .forms import BankForm,ApplicationForm,ContactForm,expenditureForm
+from .models import Bank,Application,Features,Help,Contact,Personal_expenditure,Loan
+from .forms import BankForm,ApplicationForm,ContactForm,expenditureForm,LoanCalculatorForm
 
 # Create your views here.
 def bank_list(request):
@@ -166,3 +166,16 @@ def expenditure_form_view(request):
     context = {'form':form}
 
     return render(request, 'personalExpenditures.html', context)
+
+
+def loan_calculator(request):
+    if request.method == 'POST':
+        form = LoanCalculatorForm(request.POST)
+        if form.is_valid():
+            result = form.calculate_loan()
+            form.save()
+            return render(request, 'result.html', {'result': result})
+    else:
+        form = LoanCalculatorForm()
+
+    return render(request, 'loan_calculator.html', {'form': form})

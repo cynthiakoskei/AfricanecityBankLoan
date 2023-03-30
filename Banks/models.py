@@ -10,10 +10,11 @@ class Bank(models.Model):
     bank_name= models.CharField(max_length=100)
     image = models.ImageField()
     interest_rate = models.DecimalField(max_digits=5, decimal_places=2)
+    bank_url = models.URLField(max_length=200, default="https://www.absabank.co.ke/personal/borrow/personal-loan/")
       
     def __str__(self): 
         return self.bank_name
-    
+
 
 class Application(models.Model):
     
@@ -49,6 +50,8 @@ class Application(models.Model):
     city = models.CharField(max_length=100)
     state_province = models.CharField(max_length=100)
     postal_code = models.CharField( max_length=6)
+    
+
 
     def __str__(self):
         return self.first_name
@@ -60,8 +63,6 @@ class Application(models.Model):
     widgets = {
         'birth_date': DateInput(attrs={'type': 'date'})
     }
-
-
 
     
 class Features(models.Model):

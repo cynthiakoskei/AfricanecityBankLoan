@@ -9,7 +9,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Bank(models.Model):
     bank_name= models.CharField(max_length=100)
-    bank_url = models.URLField(default="https://www.absa.africa/", max_length=200)
+    bank_url = models.URLField(default="https://www.absabank.co.ke/personal/borrow/personal-loan/", max_length=200)
     image = models.ImageField()
     interest_rate = models.FloatField()
     min_loan_amount = models.IntegerField()
@@ -81,19 +81,7 @@ class Features(models.Model):
 
     def _str_(self): 
         return str(self.bank_name)
-class Loan(models.Model):
-    bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
-    initiation_fee = models.FloatField()
-    service_fee = models.FloatField()
-    illustration_rate = models.FloatField()
-    loan_amount = models.IntegerField()
-    loan_period = models.IntegerField()
-    total_amount_payable = models.FloatField(null=True, blank=True)
-    monthly_installments = models.FloatField(null=True, blank=True)
-    total_amount = models.FloatField(null=True, blank=True)
 
-    def __str__(self):
-        return f"{self.bank.bank_name} - {self.loan_amount}"
 
 class Help(models.Model):
     details = models.TextField()
@@ -105,41 +93,38 @@ class Contact(models.Model):
 
 
 class Personal_expenditure(models.Model):
-    loan_request = models.ForeignKey(Loan_Request, on_delete=models.CASCADE, default=10000)
-   
-    # Income
-    salary = models.PositiveIntegerField(default=10000, validators=[MinValueValidator(10000)])
+    total_salary = models.ForeignKey(Loan_Request, on_delete=models.CASCADE)
+    loan_request = models.FloatField()
+    rent_or_mortgage_expense = models.FloatField()
+    property_taxes = models.FloatField()
+    home_owner_insurance = models.FloatField()
+    water = models.FloatField()
+    electricity = models.FloatField()
+    household_supplies = models.FloatField()
+    dining_out = models.FloatField()
+    takeouts = models.FloatField()
+    personal_care = models.FloatField()
+    doctors_visits = models.FloatField()
+    insurance_premiums = models.FloatField()
+    entertainment = models.FloatField()
+    credit_cards = models.FloatField()
+    loan_debts = models.FloatField()
+    childcare = models.FloatField()
+    miscellaneous_expense = models.FloatField()
+    updated_salary = models.FloatField()
+    def __str__(self):
+        return f"{self.updated_salary} - {self.total_salary.first_name}" 
+      
+class Loan(models.Model):
+    bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
+    personal_expenses = models.ForeignKey(Personal_expenditure, on_delete=models.CASCADE)
+    initiation_fee = models.FloatField()
+    service_fee = models.FloatField()
+    illustration_rate = models.FloatField()
+    loan_period = models.IntegerField()
+    total_amount_payable = models.FloatField(null=True, blank=True)
+    monthly_installments = models.FloatField(null=True, blank=True)
+    total_amount = models.FloatField(null=True, blank=True)
 
-    # housing_expense
-    rent_or_mortgage_expense = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-    property_taxes = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-    home_owner_insurance = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-    
-    # Utilities
-    water = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-    electricity = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-    household_supplies = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-    dining_out = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-    takeouts = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-
-    personal_care = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-
-    # medical_expenses 
-    doctors_visits = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-    insurance_premiums = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-
-    entertainment = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-
-    #Debt_payment
-    credit_cards = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-    loan_debts = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-
-    childcare = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-    miscellaneous_expense = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0)])
-
-    def update_salary(self):
-        self.salary = self.loan_request.salary
-        self.save()      
-
-        
-  
+    def __str__(self):
+        return f"{self.bank.bank_name} - {self.loan_amount}"

@@ -12,8 +12,6 @@ class Bank(models.Model):
     bank_url = models.URLField(default="https://www.absabank.co.ke/personal/borrow/personal-loan/", max_length=200)
     image = models.ImageField()
     interest_rate = models.FloatField()
-    min_loan_amount = models.IntegerField()
-    max_loan_amount = models.IntegerField()
     def __str__(self): 
         return self.bank_name
     
@@ -70,17 +68,14 @@ class Application(models.Model):
 class Features(models.Model):
     min_amount = models.FloatField()
     max_amount = models.FloatField()
-    low_interest_rate =  models.DecimalField(max_digits=4, decimal_places=2)
-    illustration_rate = models.DecimalField(max_digits=4, decimal_places=2)
-    amount_borrowed = models.FloatField()
-    initiation_fee = models.FloatField()
+    low_interest_rate =  models.FloatField()
+    illustration_rate = models.FloatField()
+    initiation_fee_perecentage_rate = models.FloatField()
     monthly_service_fee = models.FloatField()
-    amount_payable = models.FloatField()
-    monthly_installment_amount = models.FloatField()
     bank_name = models.ForeignKey(Bank, null=True,on_delete=models.CASCADE)
 
-    def _str_(self): 
-        return str(self.bank_name)
+    def __str__(self):
+        return f"{self.bank_name.bank_name}"
 
 
 class Help(models.Model):
@@ -94,7 +89,6 @@ class Contact(models.Model):
 
 class Personal_expenditure(models.Model):
     total_salary = models.ForeignKey(Loan_Request, on_delete=models.CASCADE)
-    loan_request = models.FloatField()
     rent_or_mortgage_expense = models.FloatField()
     property_taxes = models.FloatField()
     home_owner_insurance = models.FloatField()
@@ -117,10 +111,11 @@ class Personal_expenditure(models.Model):
       
 class Loan(models.Model):
     bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
+    bank_features = models.ForeignKey(Features, on_delete=models.CASCADE)
     personal_expenses = models.ForeignKey(Personal_expenditure, on_delete=models.CASCADE)
     initiation_fee = models.FloatField()
     service_fee = models.FloatField()
-    illustration_rate = models.FloatField()
+    loan_amount = models.FloatField()
     loan_period = models.IntegerField()
     total_amount_payable = models.FloatField(null=True, blank=True)
     monthly_installments = models.FloatField(null=True, blank=True)

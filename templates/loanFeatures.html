@@ -1,4 +1,4 @@
-{% comment %} <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Loan Features</title>
@@ -40,11 +40,8 @@
 				<th>Maximum Amount</th>
 				<th>Low Interest Rate</th>
 				<th>Illustration Rate</th>
-				<th>Amount Borrowed</th>
-				<th>Initiation Fee</th>
+				<th>Initiation Fee percentage rate</th>
 				<th>Monthly Service Fee</th>
-				<th>Amount Payable</th>
-				<th>Monthly Installment Amount</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -54,18 +51,15 @@
 				<td>{{ feature.max_amount }}</td>
 				<td>{{ feature.low_interest_rate }}</td>
 				<td>{{ feature.illustration_rate }}</td>
-				<td>{{ feature.amount_borrowed }}</td>
-				<td>{{ feature.initiation_fee }}</td>
+				<td>{{ feature.initiation_fee_perecentage_rate}}</td>
 				<td>{{ feature.monthly_service_fee }}</td>
-				<td>{{ feature.amount_payable }}</td>
-				<td>{{ feature.monthly_installment_amount }}</td>
 			</tr>
 			{% endfor %}
 		</tbody>
 	</table>
 </body>
-</html> {% endcomment %}
-<style>
+</html> 
+{% comment %} <style>
     td {
       text-align: center;
     }
@@ -319,4 +313,4 @@ pmt285Cells.forEach(cell => {
 </script>
 
 
-
+ {% endcomment %}

@@ -157,32 +157,48 @@ def delete_loan_application(request, pk):
 
 def expenditure_form_view(request):
     if request.method == 'POST':
+        # Create a new instance of expenditureForm with the submitted data
         form = expenditureForm(request.POST)
+        # Check if form data is valid
         if form.is_valid():
+            # Save the form data, but don't commit to database yet
             expenses = form.save(commit=False)
+            # Call the calculate_deficit method of the form to calculate updated salary
             loan_request = form.calculate_deficit()
+            # Update the updated_salary field of the expenses object with the calculated value
             expenses.updated_salary = loan_request['updated_salary']
+            # Save the expenses object to database
             expenses.save()
+            # Redirect to the 'bank_list' URL
             return redirect('bank_list')
     else:
+        # Create a new instance of expenditureForm
         form = expenditureForm()
-
-    return render(request, 'personalExpenditures.html',{'form': form})
+    
+    # Render the 'personalExpenditures.html' template with the form as context variable
+    return render(request, 'personalExpenditures.html', {'form': form})
 
 def loan_calculator(request):
     if request.method == 'POST':
+        # Create a LoanCalculatorForm instance with the POST data
         form = LoanCalculatorForm(request.POST)
         if form.is_valid():
+            # Create a new Loan instance but do not save it to the database yet
             loan = form.save(commit=False)
+            # Calculate the loan details using the calculate_loan() method of the form
             loan_result = form.calculate_loan()
+            # Set the loan instance attributes using the loan_result dictionary
             loan.initiation_fee =loan_result['initiation_fee']
             loan.service_fee =loan_result['service_fee']
             loan.total_amount_payable = loan_result['total_amount_payable']
             loan.monthly_installments = loan_result['monthly_installments']
             loan.total_amount = loan_result['total_amount']
+            # Save the loan instance to the database
             loan.save()
+            # Render the result.html template with the loan_result dictionary as the context
             return render(request, 'result.html', {'result': loan_result})
     else:
+        # If the request method is GET, then create a new LoanCalculatorForm instance
         form = LoanCalculatorForm()
-
+    # Render the loan_calculator.html template with the LoanCalculatorForm instance as the context
     return render(request, 'loan_calculator.html', {'form': form})

@@ -163,7 +163,7 @@ def expenditure_form_view(request):
             loan_request = form.calculate_deficit()
             expenses.updated_salary = loan_request['updated_salary']
             expenses.save()
-            return redirect('loan_calculator')
+            return redirect('bank_list')
     else:
         form = expenditureForm()
 
@@ -175,6 +175,8 @@ def loan_calculator(request):
         if form.is_valid():
             loan = form.save(commit=False)
             loan_result = form.calculate_loan()
+            loan.initiation_fee =loan_result['initiation_fee']
+            loan.service_fee =loan_result['service_fee']
             loan.total_amount_payable = loan_result['total_amount_payable']
             loan.monthly_installments = loan_result['monthly_installments']
             loan.total_amount = loan_result['total_amount']

@@ -52,13 +52,12 @@ class expenditureForm(forms.ModelForm):
     updated_salary = forms.DecimalField(label="updated_salary", disabled=True)    
     class Meta:
         model = Personal_expenditure
-        fields = ['total_salary','loan_request','rent_or_mortgage_expense', 'property_taxes', 'home_owner_insurance', 'water',
+        fields = ['total_salary','rent_or_mortgage_expense', 'property_taxes', 'home_owner_insurance', 'water',
                   'electricity', 'household_supplies', 'dining_out', 'takeouts', 'personal_care',
                   'doctors_visits', 'insurance_premiums', 'entertainment', 'credit_cards', 'loan_debts',
                   'childcare', 'miscellaneous_expense']
         widgets = {
             'total_salary': forms.Select(attrs={'class': 'form-select'}),
-            'loan_request': forms.NumberInput(attrs={'class': 'form-control'}),
             'rent_or_mortgage_expense': forms.NumberInput(attrs={'class': 'form-control'}),
             'property_taxes': forms.NumberInput(attrs={'class': 'form-control'}),
             'home_owner_insurance': forms.NumberInput(attrs={'class': 'form-control'}),
@@ -100,18 +99,16 @@ class LoanCalculatorForm(forms.ModelForm):
     total_amount = forms.DecimalField(label="Total Amount", disabled=True)
     total_amount_payable = forms.DecimalField(label="Amount Payable", disabled=True)
     affordability = forms.DecimalField(label="Affordability", disabled=True)
-    
+    initiation_fee = forms.DecimalField(label="initiation_fee", disabled=True)    
     class Meta:
         model = Loan
-        fields = ['bank', 'personal_expenses', 'initiation_fee', 'service_fee', 'illustration_rate', 'loan_period']
+        fields = ['bank','bank_features','personal_expenses','loan_amount','loan_period']
         widgets = {
             'bank': forms.Select(attrs={'class': 'form-select'}),
             'personal_expenses': forms.Select(attrs={'class': 'form-select'}),
-            'initiation_fee': forms.NumberInput(attrs={'class': 'form-control'}),
-            'service_fee': forms.NumberInput(attrs={'class': 'form-control'}),
-            'illustration_rate': forms.NumberInput(attrs={'class': 'form-control'}),
             'loan_amount': forms.NumberInput(attrs={'class': 'form-control'}),
             'loan_period': forms.NumberInput(attrs={'class': 'form-control'}),
+            'bank_features': forms.Select(attrs={'class': 'form-select'}),
         }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -120,28 +117,38 @@ class LoanCalculatorForm(forms.ModelForm):
         self.fields['total_amount'].initial = 0
         self.fields['total_amount_payable'].initial = 0
         self.fields['affordability'].initial = 0
+        self.fields['initiation_fee'].initial = 0
 
     def calculate_loan(self):
         cleaned_data = super().clean()
         bank = cleaned_data.get('bank')
+        bank_features = cleaned_data.get('bank_features')
         personal_expenses = cleaned_data.get('personal_expenses')
-        initiation_fee = cleaned_data.get('initiation_fee')
-        service_fee = cleaned_data.get('service_fee')
-        illustration_rate = cleaned_data.get('illustration_rate')
+        loan_amount = cleaned_data.get('loan_amount')
         loan_period = cleaned_data.get('loan_period')
 
         interest_rate = bank.interest_rate
+        illustration_rate = bank_features.illustration_rate
+        initiation_fee_perecentage_rate = bank_features.initiation_fee_perecentage_rate
+        min_amount = bank_features.min_amount
+        max_amount = bank_features.max_amount
+        if loan_amount > max_amount:
+            raise forms.ValidationError('Loan amount cannot exceed the maximum loan amount limit')
+        elif loan_amount < min_amount:
+            raise forms.ValidationError('Loan amount cannot be below the banks minimum loan amount limit')
+
         bank_name = bank.bank_name
         bank_url = bank.bank_url
-        loan_amount = personal_expenses.loan_request
+        service_fee = bank_features.monthly_service_fee 
         salary = personal_expenses.updated_salary
         monthly_interest_rate = interest_rate / 100 / 12
-        num_payments = loan_period * 12
+        num_payments = loan_period
         annuity_factor = (monthly_interest_rate * pow(1 + monthly_interest_rate, num_payments)) / (pow(1 + monthly_interest_rate, num_payments) - 1)
         monthly_payment = round(loan_amount * annuity_factor, 2)
         total_amount = round(monthly_payment * num_payments, 2)
         total_interest = round(total_amount - loan_amount, 2)
-        initiation_fee = round(initiation_fee, 2)
+        initiation_fee_percentage_rate= initiation_fee_perecentage_rate / 100
+        initiation_fee = round((loan_amount * initiation_fee_percentage_rate), 2)
         service_fee = round(service_fee * num_payments, 2)
         illustration_fee = round(loan_amount * illustration_rate / 100, 2)
         total_amount_payable = round(total_amount + initiation_fee + service_fee + illustration_fee, 2)
@@ -153,6 +160,8 @@ class LoanCalculatorForm(forms.ModelForm):
         cleaned_data['total_amount_payable'] = total_amount_payable
         cleaned_data['bank_name'] = bank_name
         cleaned_data['bank_url'] = bank_url
+        cleaned_data['service_fee'] = service_fee
         cleaned_data['affordability'] = affordability
+        cleaned_data['initiation_fee'] = initiation_fee
         
         return cleaned_data

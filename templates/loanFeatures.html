@@ -1,148 +1,83 @@
-{% comment %} <!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Loan Features</title>
-	<style>
-		table {
-			border-collapse: collapse;
-			width: 100%;
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			text-align: center;
-		}
-		table th {
-			background-color: #ccc;
-			padding: 10px;
-			border: 1px solid #ddd;
-		}
-		table td {
-			padding: 10px;
-			border: 1px solid #ddd;
-		}
-		bank_name {
-			rowspan: 9;
-			font-weight: bold:
-			font-size: 20px;
-		}
-	</style>
-</head>
-<body>
-	
-	<table>
-		<thead>
-			{% for feature in features %}
-			<tr>
-				<th class='bank_name'>{{ feature.bank_name }}</th>
-			</tr>
-			{% endfor %}
-			<tr>
-				<th>Minimum Amount</th>
-				<th>Maximum Amount</th>
-				<th>Low Interest Rate</th>
-				<th>Illustration Rate</th>
-				<th>Amount Borrowed</th>
-				<th>Initiation Fee</th>
-				<th>Monthly Service Fee</th>
-				<th>Amount Payable</th>
-				<th>Monthly Installment Amount</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for feature in features %}
-			<tr>
-				<td>{{ feature.min_amount }}</td>
-				<td>{{ feature.max_amount }}</td>
-				<td>{{ feature.low_interest_rate }}</td>
-				<td>{{ feature.illustration_rate }}</td>
-				<td>{{ feature.amount_borrowed }}</td>
-				<td>{{ feature.initiation_fee }}</td>
-				<td>{{ feature.monthly_service_fee }}</td>
-				<td>{{ feature.amount_payable }}</td>
-				<td>{{ feature.monthly_installment_amount }}</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-</body>
-</html> {% endcomment %}
 <style>
-    td {
-      text-align: center;
-    }
-  </style>
-  {% load static %}
-  
-  
-  <table  style="text-align: center;">
-    <tr>
-      <th rowspan="5"><img src="{%static 'img/absa.png'%}"></th>
-      <th>Category</th>
-      <th>Interest_Rates</th> 
-    </tr>
-    <tr>
-      <td>Excellent</td>
-      <td></td>
-      <td>10.3</td>
-    </tr>
-    <tr>
-      <td>Good</td>
-      <td></td>
-      <td>13.5</td>
-    </tr>
-    <tr>
-      <td>Fair</td>
-      <td></td>
-      <td>17.8</td>
-    </tr>
-    <tr>
-      <td>Poor</td>
-      <td></td>
-      <td>28.5</td>
-    </tr>
-  </table>
+  /* table styles */
+  #my-table {
+    border-collapse: collapse;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    width: 100%;
+    background-image: url('\static\images\home_slider.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
+  #my-table th,
+  #my-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
 
+  #my-table th {
+    background-color: #ccc;
+    font-weight: bold;
+    text-align: center;
+  }
 
+  /* image styles */
+  #my-table img {
+    max-height: 50px;
+  }
 
-<style>
-  td {
+  /* center text in payment cells */
+  #my-table td.payment {
     text-align: center;
   }
 </style>
-
+<body>
 <table id="my-table">
   <tr>
-  <th rowspan="5"><img src="{%static 'img/absa.png'%}"></th>
+    <th rowspan="5">
+      {% for bank in banks %}
+      <img src="{{bank.image.url}}"/>
+      {% endfor %}
+    </th>
     <th>Monthly Instalments</th>
     <th>Number of Payments</th>
     <th>Interest Rate</th>
     <th>Qualified Amount</th>
   </tr>
   <tr>
-    <td id="pmt-1"></td>
+    <td class="payment" id="pmt-1"></td>
     <td>60</td>
     <td>0.00858</td>
     <td>$10,000.00</td>
   </tr>
   <tr>
-    <td id="pmt-2"></td>
+    <td class="payment" id="pmt-2"></td>
     <td>48</td>
     <td>0.00858</td>
     <td>$10,000.00</td>
   </tr>
   <tr>
-    <td id="pmt-3"></td>
+    <td class="payment" id="pmt-3"></td>
     <td>36</td>
     <td>0.00858</td>
     <td>$10,000.00</td>
   </tr>
   <tr>
-    <td id="pmt-4"></td>
+    <td class="payment" id="pmt-4"></td>
     <td>24</td>
     <td>0.00858</td>
     <td>$10,000.00</td>
   </tr>
+ 
 </table>
+  <a href='/Banks/Applicant/'><button>Apply</button></a>
 
 <script>
   function calculatePmt(n, r, pv) {
@@ -150,9 +85,7 @@
     var pmt = pv * rPerMonth / (1 - Math.pow(1 + rPerMonth, -n));
     return pmt.toFixed(2);
   }
-//n = number of Payments
-//r = interest rate
-//pv = loan amount(present value)
+
   var table = document.getElementById("my-table");
 
   for (var i = 1; i < table.rows.length; i++) {
@@ -161,162 +94,9 @@
     var r = parseFloat(row.cells[2].textContent);
     var pv = parseFloat(row.cells[3].textContent.replace(/[^0-9.-]+/g, ""));
     var pmt = calculatePmt(n, r, pv);
-    row.cells[0].textContent = "$" + pmt;
+    row.cells[0].innerHTML = "$" + pmt;
+    row.cells[0].classList.add("payment");
   }
 </script>
-
-<table>
-  <tr>
-  <th rowspan="5"><img src="{%static 'img/absa.png'%}"></th>
-    <th>Monthly Instalments</th>
-    <th>Number of Payments</th>
-    <th>Interest Rate</th>
-    <th>Qualified Amount</th>
-  </tr>
-  <tr>
-    <td id="pmt135"></td>
-    <td>60</td>
-    <td>0.01125</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt135"></td>
-    <td>48</td>
-    <td>0.01125</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt135"></td>
-    <td>36</td>
-    <td>0.01125</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt135"></td>
-    <td>24</td>
-    <td>0.01125</td>
-    <td>$20,000.00</td>
-  </tr>
-</table>
-
-<script>
-function calculatePMT(rate, nper, pv) {
-  const r = rate / 12;
-  const pmt = r * pv / (1 - Math.pow(1 + r, -nper));
-  return pmt.toFixed(2);
-}
-
-const pmt135Cells = document.querySelectorAll('#pmt135');
-pmt135Cells.forEach(cell => {
-  const nper = parseInt(cell.parentElement.children[1].textContent);
-  const rate = parseFloat(cell.parentElement.children[2].textContent);
-  const pv = parseFloat(cell.parentElement.children[3].textContent.replace(/[^0-9.-]+/g,""));
-  const pmt = calculatePMT(rate, nper, pv);
-  cell.textContent = "$" + pmt;
-});
-</script>
-
-<table>
-  <tr>
-    <th rowspan="5"><img src="{%static 'img/absa.png'%}"></th>
-    <th>Monthly Instalments</th>
-    <th>Number of Payments</th>
-    <th>Interest Rate</th>
-    <th>Qualified Amount</th>
-  </tr>
-  <tr>
-    <td id="pmt178"></td>
-    <td>60</td>
-    <td>0.01483</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt178"></td>
-    <td>48</td>
-    <td>0.01483</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt178"></td>
-    <td>36</td>
-    <td>0.01483</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt178"></td>
-    <td>24</td>
-    <td>0.01483</td>
-    <td>$12,000.00</td>
-  </tr>
-</table>
-
-<script>
-function calculatePMT(rate, nper, pv) {
-  const r = rate / 12;
-  const pmt = r * pv / (1 - Math.pow(1 + r, -nper));
-  return pmt.toFixed(2);
-}
-
-const pmt178Cells = document.querySelectorAll('#pmt178');
-pmt178Cells.forEach(cell => {
-  const nper = parseInt(cell.parentElement.children[1].textContent);
-  const rate = parseFloat(cell.parentElement.children[2].textContent);
-  const pv = parseFloat(cell.parentElement.children[3].textContent.replace(/[^0-9.-]+/g,""));
-  const pmt = calculatePMT(rate, nper, pv);
-  cell.textContent = "$" + pmt;
-});
-</script>
-
-<table>
-  <tr>
-  <th rowspan="5"><img src="{%static 'img/absa.png'%}"></th>
-    <th>Monthly Instalments</th>
-    <th>Number of Payments</th>
-    <th>Interest Rate</th>
-    <th>Qualified Amount</th>
-  </tr>
-  <tr>
-    <td id="pmt285"></td>
-    <td>60</td>
-    <td>0.01425</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt285"></td>
-    <td>48</td>
-    <td>0.01425</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt285"></td>
-    <td>36</td>
-    <td>0.01425</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt285"></td>
-    <td>24</td>
-    <td>0.01425</td>
-    <td>$12,000.00</td>
-  </tr>
-</table>
-
-<script>
-function calculatePMT(rate, nper, pv) {
-  const r = rate / 12;
-  const pmt = r * pv / (1 - Math.pow(1 + r, -nper));
-  return pmt.toFixed(2);
-}
-
-const pmt285Cells = document.querySelectorAll('#pmt285');
-pmt285Cells.forEach(cell => {
-  const nper = parseInt(cell.parentElement.children[1].textContent);
-  const rate = parseFloat(cell.parentElement.children[2].textContent);
-  const pv = parseFloat(cell.parentElement.children[3].textContent.replace(/[^0-9.-]+/g,""));
-  const pmt = calculatePMT(rate, nper, pv);
-  cell.textContent = "$" + pmt;
-});
-</script>
-
-
-
+</body>
+</html>

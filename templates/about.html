@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About - CBS</title>
+	<link rel="stylesheet" href="{% static 'about.css' %}">
+	<link rel="stylesheet" href="/static/styles/navbar.css">
+</head>
+
+<body>
+	<!-- nav/menu -->
+	<nav class="navbar">
+		<img class="logo" id="logo" src="/static/CBS-Logo.png" alt="Continental Banking Site Logo">
+		<input class="menu-btn" type="checkbox" id="menu-btn" />
+		<label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
+		<!-- Menu-->
+		<ul class="menu">
+			<li><a href="/">Home</a></li>
+			<li><a href="/Banks/About Us/">About us</a></li>
+			<li><a href="/Banks/Contact/">Contact</a></li>
+			<li><a href="/Banks/Help/">Help</a></li>
+			<!-- {% if user.is_authenticated %}
+			<li><a href="{% url 'logout' %}">Logout</a></li>
+			{% else %}
+			<li><a href="{% url 'login' %}">Login</a></li>
+		  {% endif %} -->
+		</ul>
+	</nav>
+
+	<!--body-->
+	<section class="about" id="about">
+		<div class="container">
+			<!-- about left section -->
+			<div class="about-left">
+				<h2>About Us</h2>
+				<p>We are a team of developers who have created this website to help people find the best loan
+					options available to them. Our platform allows users to access all the banks in one place, making it
+					easier to compare loan interest rates and terms. Our goal is to make the loan application process as
+					simple and straightforward as possible for our users.</p>
+
+				<p>At our core, we believe in empowering people to make informed decisions when it comes to their
+					finances. We believe that everyone should have access to the information they need to make the
+					best financial decisions for themselves. With our platform, we aim to provide users with the
+					transparency and information they need to make informed decisions about their loans.</p>
+
+				<p>If you have any questions or feedback about our platform, please feel free to contact us at <a href="mailto:info@loanscompare.com">plpgroup24@gmail.com</a>.</p>
+
+				<p>Thank you for using CBS!</p>
+			</div>
+
+			<!-- about right section -->
+			<div class="about-right">
+				<img src="/static/images/imgs/CBS/CBS-Black.jpeg" alt="CBS Logo1">
+				<img src="/static/images/imgs/CBS/CBS-Blues.jpeg" alt="CBS Logo2">
+			</div>
+
+			<!-- about team section -->
+			<div class="about-team" class="about-bottom">
+				<h2>Our Team</h2>
+				<div class="team">
+					<figure>
+						<img src="/static/images/imgs/Cynthia.png" alt="Team Member 2">
+						<figcaption>Cynthia Koskei</figcaption>
+						<button class="btn"><a href="https://github.com/Ckoskei" target="_blank">GitHub</a></button>
+					</figure>
+					<figure>
+						<img src="/static/images/imgs/Bafana.png" alt="Team Member 3">
+						<figcaption>Bafana Lukhele</figcaption>
+						<button class="btn"><a href="https://github.com/Bafana2022" target="_blank">GitHub</a></button>
+					</figure>
+					<figure>
+						<img src="/static/images/imgs/Kelvin.png" alt="Team Member 4">
+						<figcaption>Kelvin Kipkosgei</figcaption>
+						<button class="btn"><a href="https://github.com/Sanga78" target="_blank">GitHub</a></button>
+					</figure>
+					<figure>
+						<img src="/static/images/imgs/Karabo.png" alt="Team Member 5">
+						<figcaption>Karabo Molepo</figcaption>
+						<button class="btn"><a href="https://github.com/Kaybee-debug" target="_blank">GitHub</a></button>
+					</figure>
+					<figure>
+						<img src="/static/images/imgs/Daniel.png" alt="Team Member 6">
+						<figcaption>Daniel Kimeli Kwambai</figcaption>
+						<button class="btn"><a href="https://github.com/danielkwambai" target="_blank">GitHub</a></button>
+					</figure>
+					<figure>
+						<img src="/static/images/imgs/Puse.png" alt="Team Member 6">
+						<figcaption>Pusetso Mguzulwa</figcaption>
+						<button class="btn"><a href="https://github.com/pusetsom" target="_blank">GitHub</a></button>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- footer -->
+	<footer>
+		<p>PLP Group 24 Project | All rights reserved. 2022 -
+			<script>document.write(new Date().getFullYear());</script>
+		</p>
+	</footer>
+</body>
+
+</html>

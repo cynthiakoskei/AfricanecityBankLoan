@@ -1,0 +1,67 @@
+{% load crispy_forms_tags %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+{% block content %}
+<div class="container mt-3" style="width: 95%; font-size: 14px">
+    <form method="POST" class="card p-3 mt-5" autocomplete="off">
+        {% csrf_token %}
+        <title> Loan Application Form</title>
+        <h1> LOAN APPLICATION FORM</h1>
+        <div class="row">
+            <div class="col-6">
+                {{ form.desired_loan|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.annual_income|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.loan_will_be_used_for|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.first_name|as_crispy_field }}
+            </div>
+            <div clas="col-6">
+                {{ form.last_name|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.birth_date|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.email|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.phoneNumber|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.home_address|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.city|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.state_province|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.postal_code|as_crispy_field }}
+            </div>
+        </div>
+        
+              
+    <button type="submit" class="btn btn-primary mt-3" style="width: 90px">Submit</button>
+
+    </form>
+
+    <!-- Message from backend-->
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+            <div class="text-center alert-primary alert-dismissible fade show" role="alert">{{message}}
+                <a href="{% url 'Home' %}" type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+            </div>
+
+        {% endif %}
+    {% endfor %}    
+</div>
+{% endblock %}

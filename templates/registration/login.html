@@ -10,15 +10,22 @@
 	<link href="{% static 'css/registration.css' %}" rel="stylesheet" >
 </head>
 <body>
+	
 	<div class="login_container">
 		<div id="main">
 			<form method="POST">
+				{% csrf_token %}
 				<h1>Sign In</h1>
-				<input id="email" type="email" placeholder="Email">
-				<input id="password" type="password" placeholder="Password">
+				{% if messages %}
+				{% for message in messages %}
+				<h2>{{message}}</h2>
+				{% endfor %}
+				{% endif %}
+				<input type="text" name ="username" placeholder="Username">
+				<input type="password" name="password"placeholder="Password">
 				<button id="submit">Login</button>
 				<p><span>Don't have an account</span></p>
-				<button id="signUp_btn"><a href="register">Sign up</a></button>
+				<button id="signUp_btn"><a href= "register" >Sign up</a></button>
 			<form>
 		</div>		
 	</div>

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Bank Views </title>
+    <link rel="stylesheet" href="/static/styles/navbar.css">
+    <link rel="stylesheet" href="/static/styles/vews.css">
+</head>
+
+<body>
+	<!-- nav/menu -->
+    <nav class="navbar">
+        <a class="logo">Africanecity</a>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
+        <!-- Menu-->
+        <ul class="menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Banks/About Us/">About us</a></li>
+            <li><a href="/Banks/Contact/">Contact</a></li>
+            <li><a href="/Banks/Help/">Help</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+        <section class="productus"> 
+			<h2> Recomendations </h2>
+			<div class="products">
+				{% for bank in banks%}
+				<div class="content">
+					<ul>
+						<li>
+							<img class="image" src="{{bank.image.url}}"/>
+							<h3>{{bank.bank_name}} bank</h3>
+							<p>Interest rate <span>{{bank.interest_rate}}%</span></p>
+							<a href="/Banks/Calculator/">Visit</a> 
+						</li>
+					</ul>
+				</div>
+				{% endfor %}
+			</div>
+        </section>
+		<!-- footer -->
+        <footer>
+            <p>PLP Group 24 Project | All rights reserved. 2022 -
+                <script>document.write(new Date().getFullYear());</script>
+            </p>
+        </footer>
+</body>
+</html>

@@ -1,5 +1,82 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continental Banking Site</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+	<link rel="stylesheet" href="/static/styles/navbar.css">
+</head>
+
+<body>
+    <!-- nav/menu -->
+	<nav class="navbar">
+		<img class="logo" id="logo" src="{% static 'CBS-Logo.png' %}" alt="Continental Banking Site Logo">
+		<input class="menu-btn" type="checkbox" id="menu-btn" />
+		<label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
+		<!-- Menu-->
+		<ul class="menu">
+			<li><a href="/">Home</a></li>
+			<li><a href="/Banks/About Us/">About us</a></li>
+			<li><a href="/Banks/Contact/">Contact</a></li>
+			<li><a href="/Banks/Help/">Help</a></li>
+		</ul>
+	</nav>
+	<!-- end of nav/menu -->
+
+    <!-- home section starts here -->
+    <section class="home" id="home">
+        <div class="content">
+            <h1>Continental <h2>Banking Site</h2></h1>
+            <p>Making Banking Easier Across The African Continent. Check If You Qualify For A Loan, Find Out Which Bank Offers The Best Rates, And Determine How Much You Can Borrow – All Without Any Hassle Of Going Through Paperwork Or Waiting In Queues.</p>
+            <p>Get Everything Done From The Comfort Of Your Own Home. Before you get started, learn how it works by clicking the button below.</p>
+			<a href="/Banks/Help/" class="btn">Help</a>
+        </div>
+        <div class="form">
+			<h2>Calculate your loan amount here</h2>
+			<form method="post"  class="card p-3 mt-5" autocomplete="off">
+				{%csrf_token%}
+					<div class="row">
+						<div class="col-6">
+							{{ form.first_name|as_crispy_field }}
+						</div>
+						<div clas="col-6">
+							{{ form.last_name|as_crispy_field }}
+						</div>
+						<div class="col-6">
+							{{ form.id_number|as_crispy_field }}
+						</div>
+						<div class="col-6">
+							{{ form.contact_details|as_crispy_field }}
+						</div>
+						<div class="col-6">
+							{{ form.email_adress|as_crispy_field }}
+						</div>
+						<div class="col-6">
+							{{ form.salary|as_crispy_field }}
+						</div>
+					</div>
+				<button type="submit">Submit</button>
+			</form>
+        </div>
+    </section>
+    <!-- home section ends here -->
+	<!-- footer -->
+	<footer>
+		<p>PLP Group 24 Project | All rights reserved. 2022 -
+			<script>document.write(new Date().getFullYear());</script>
+		</p>
+	</footer>
+=======
 
 <head>
   <meta charset="UTF-8">
@@ -28,6 +105,7 @@
 
     </div>
   </section>
+>>>>>>> origin/main
 </body>
 
 </html>

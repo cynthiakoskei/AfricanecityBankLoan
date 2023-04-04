@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Calculator</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 10px 7%;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        color: #444;
+        margin-top: 2rem;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+    }
+    
+    th {
+        background-color: whiesmoke;
+        font-weight: bold;
+        padding: 1rem;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+    
+    td {
+        background-color: #fff;
+        padding: 1rem;
+        border: 1px solid #ddd;
+    }
+    
+    a {
+        display: block;
+        margin-top: 2rem;
+        text-align: center;
+        text-decoration: none;
+        background-color: #007bff;
+        color: #fff;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        transition: background-color 0.3s ease;
+    }
+    
+    a:hover {
+        background-color: #0069d9;
+    }
+</style>
+</head>
+<body>
+    <h1>Loan Calculation Result</h1>
+    <table>
+        <tr>
+            <th>Bank Name:</th>
+            <td>{{ result.bank_name }}</td>
+        </tr>
+        <tr>
+            <th>Amount Payable:</th>
+            <td>{{ result.total_amount_payable }}</td>
+        </tr>
+        <tr>
+            <th>Monthly Installments:</th>
+            <td>{{ result.monthly_installments }}</td>
+        </tr>
+        <tr>
+            <th>Total Interest:</th>
+            <td>{{ result.total_interest }}</td>
+        </tr>
+        <tr>
+            <th>Total Amount:</th>
+            <td>{{ result.total_amount }}</td>
+        </tr>
+        <tr>
+            <th>Initiation Fee:</th>
+            <td>{{ result.initiation_fee }}</td>
+        </tr>
+        <tr>
+            <th>Service Fee:</th>
+            <td>{{ result.service_fee }}</td>
+        </tr>
+        <tr>
+            <th>Affordability:</th>
+            <td>{{ result.affordability }}</td>
+        </tr>
+    </table>
+    <a href="{{ result.bank_url }}">Visit Bank</a>
+</body>
+</html>
+
+

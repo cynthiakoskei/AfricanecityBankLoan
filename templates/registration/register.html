@@ -1,3 +1,4 @@
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -13,14 +14,17 @@
 	<div class="login_container">
         <div id="create-account">
             <form method="post">
+                {% csrf_token %}
                 <h1>Sign Up below</h1>
-                {% for message in messages %}
-                <h2><center>{{message}}</center></h2>
-                {% endfor %}
-                <input id="email_signUp" type="email" placeholder="Email">
-                <input id="confirm_email_signUp" type="email" placeholder="Confirm Email">
-                <input id="password1" type="password" placeholder="Password">
-                <input id="password2" type="password" placeholder="Confirm Password">
+                {% if messages %}
+				{% for message in messages %}
+				<h2>{{message}}</h2>
+				{% endfor %}
+				{% endif %}
+                <input name="email" type="email" placeholder="Email">
+                <input name="username" type="text" placeholder="username">
+                <input name="password1" type="password" placeholder="Password">
+                <input name="password2" type="password" placeholder="Confirm Password">
                 <button id="Register_btn" type="submit">Sign Up</button>
                 <button id="signUp_btn"><a href="login">Already have an account</a></button>
             </form>

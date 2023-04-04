@@ -1,71 +1,92 @@
-.login_container {
-    background-color: white;
+/* CSS for the registration form */
+
+:root {
+    --black: #13131a;
+  }
+  
+  body {
+    background: inherit;
+  }
+  
+  .login_container {
+    background-color: #F7F7F7;
     padding: 5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    width: 30vw;
+    width: 80%;
+    max-width: 400px;
     margin: auto;
-    height: 60vh;
-    margin-top: 10vh;
-}
-h1 {
-    margin-bottom: 6%;
+    height: auto;
+    margin-top: 15vh;
+  }
+  
+  .login_container h1 {
+    margin-bottom: 7%;
     text-align: center;
     font-family: "Fredoka One", cursive;
-    color: goldenrod;
+    color: var(--black);
     letter-spacing: 0.1rem;
-}
-
-p {
+  }
+  
+  h2 {
+    color: red;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+  }
+  
+  p {
     margin-top: 5%;
     margin-bottom: 5%;
     width: 100%;
     text-align: center;
-    border-bottom: 1px solid#333;
+    border-bottom: 1px solid #333;
     line-height: 0.1rem;
-}
-
-p span {
+  }
+  
+  p span {
     background: white;
     padding: 0 10px;
-}
-
-input {
+  }
+  
+  input {
     margin-bottom: 3%;
-}
-
-input:last-of-type {
-    margin-bottom: 0;
-}
-
-input,
-button {
-    padding: 3%;
+    background: inherit;
     width: 100%;
-}
-
-#submit,
-#Register_btn {
-    background-color: orangered;
+    padding: 3%;
+    box-sizing: border-box;
+  }
+  
+  input:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  button {
+    width: 100%;
+    padding: 3%;
+    box-sizing: border-box;
+    background-color: var(--black);
     color: white;
     border: none;
     margin-top: 5%;
-}
-
-button:hover {
+  }
+  
+  button:hover {
     cursor: pointer;
     opacity: 0.8;
     transition: 0.3s;
-}
-
-#signUp_btn {
+  }
+  
+  #signUp_btn {
     border: none;
-}
-
-
-#return_btn {
     background: none;
-    color: grey;
+    color: white;
     text-decoration: underline;
-    border: none;
     margin-top: 3%;
-}
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .login_container {
+      width: 90%;
+      margin-top: 10vh;
+    }
+  }
+  

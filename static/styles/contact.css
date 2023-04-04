@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* caontact us body */
+.contact{
+    padding-top: 90px;
+    height: 100vh;
+    min-height: 500px;
+background: url("/static/images/contact_us.jpeg");
+    background-size: cover;
+    background-color: rgb(69, 93, 226);
+}
+.container {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 40px 30px;
+	background-color: rgba(255, 255, 255, 0.9);
+	border-radius: 20px;
+
+}
+h1 {
+	text-align: center;
+	margin-bottom: 30px;
+	color: #2C3E50;
+	font-size: 40px;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: black;
+	border-radius: 5px;
+	background-color:rgba(255, 255, 255, 0.4); 
+	color: #555;
+	font-size: 25px;
+	resize: none;
+}
+input[type="submit"] {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-radius: 10px;
+	background-color: #2C3E50;
+	color: #FFF;
+	font-size: 25px;
+	cursor: pointer;
+}

@@ -1,14 +1,37 @@
+{% load crispy_forms_tags %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <h1>Loan Calculator</h1>
-      <form method="POST" class="form">
+{% block content %}
+<div class="container mt-3" style="width: 95%; font-size: 14px">
+    <form method="POST" class="card p-3 mt-5" autocomplete="off">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Calculate</button>
-      </form>
-    </div>
-  </div>
+        <title> Loan Calculator</title>
+        <center><h1> LOAN CALCULATOR</h1><center>
+        <div class="row">
+            <div class="col-6">
+                {{ form.bank|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.personal_expenses|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.initiation_fee|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.service_fee|as_crispy_field }}
+            </div>
+            <div clas="col-6">
+                {{ form.illustration_rate|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.loan_period|as_crispy_field }}
+            </div>
+        </div>  
+			      
+      <center><button type="submit" class="btn btn-primary mt-3" style="width: 45%">Calculate</button></center>
+    </form> 
 </div>
-
+{% endblock %}

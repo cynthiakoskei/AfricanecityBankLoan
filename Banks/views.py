@@ -124,7 +124,7 @@ def create_loan_application(request):
             loan_application = form.save(commit=False)
             loan_application.user = request.user
             loan_application.save()
-            return redirect('Loan Detail/', pk=loan_application.pk)
+            return redirect('/Banks/bank_url',  pk=loan_application.pk)
     else:
         form = ApplicationForm()
     return render(request, 'create_loan_application.html', {'form': form})

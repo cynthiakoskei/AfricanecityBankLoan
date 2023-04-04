@@ -12,8 +12,6 @@ class Bank(models.Model):
     bank_url = models.URLField(default="https://www.absabank.co.ke/personal/borrow/personal-loan/", max_length=200)
     image = models.ImageField()
     interest_rate = models.FloatField()
-    min_loan_amount = models.IntegerField(default=25000)
-    max_loan_amount = models.IntegerField(default=150000)
     def __str__(self): 
         return self.bank_name
     
@@ -64,9 +62,9 @@ class Application(models.Model):
         'birth_date': DateInput(attrs={'type': 'date'})
     }
     
-class Features(models.Model):
-    min_amount = models.FloatField()
-    max_amount = models.FloatField()
+class Features(models.Model):    
+    min_amount = models.FloatField(default=25000)
+    max_amount = models.FloatField(default=150000)
     low_interest_rate =  models.FloatField()
     illustration_rate = models.FloatField()
     initiation_fee_perecentage_rate = models.FloatField()

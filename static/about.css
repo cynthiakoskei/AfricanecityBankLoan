@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    transition: .2s linear;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 530;
+  }
+  
+  .container {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 5px;
+    background-color: rgba(32, 84, 155, 0.5);
+  }
+  
+  .about-left,
+  .about-right {
+    min-height: 100%;
+  }
+  
+  /* about */
+  .about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: url(/static/images/about.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    flex-wrap: wrap;
+    padding-top: 60px;
+    background-color: #007ecc;
+  }
+  
+  /* about-left section  */
+  .about-left {
+    color: black;
+    width: 60%;
+    background-color: rgba(255, 255, 255, 0.623);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .about-left h2{
+    padding: 10px
+  
+}
+
+.about-left p{
+    padding: 10px;
+    font-size: 16px;
+  }
+
+.about-left p a{
+  color: blue;
+  text-transform: none;
+  text-decoration: underline;
+}
+  
+  /* about-right section */
+  .about-right {
+    width: 35%;
+    padding-top: 30px;
+  }
+  
+  .about-right img {
+    width: 100%;
+    height: 40%;
+    border-radius: 5px;
+    object-fit: cover;
+    opacity: 0;
+    animation: fade-in 1s ease-in-out forwards;
+  }
+  
+  .about-right img:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  
+  .about-right img:nth-child(3) {
+    animation-delay: 1s;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* about-team section */
+  .about-team {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding-top: 15px;
+  }
+  
+  figcaption{
+    padding: 10px;
+  }
+  
+  .about-team h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    text-decoration: underline;
+  }
+  
+  .about-team, a {
+    color: white;
+  }
+  
+  figure {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px;
+  }
+  
+  .about-team figure:hover {
+    background-color: rgba(255, 255, 255, 0.623);
+    transform: scale(1.2);
+    transition: all 0.2s ease-in-out;
+    color: black;
+  }
+  
+  .about-team img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+  }
+  
+  .team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    animation: fade-in-left 1s ease-out forwards;
+  }
+  
+  @keyframes fade-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .about-team figure {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+    opacity: 0;
+    animation: fade-in 1s ease-in-out forwards;
+  }
+  
+  @keyframes team-fade-in {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .team figure:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  
+  .team figure:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  
+  .team figure:nth-child(4) {
+    animation-delay: 0.9s;
+  }
+  
+  /* Git button */
+  .btn{
+    padding: 2px;
+    border-radius: 5px;
+    border: none;
+  }
+  .btn a{
+    color: black;
+  }
+  .btn:hover a{
+    background-color: #21867a7c;
+    color: white;
+    size: 2rem;
+  }
+  
+  /* responsiveness on smaller screens */
+  @media screen and (max-width: 767px) {
+     .about-left, .about-right, .about-team {
+      width: 100%;
+      float: none;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .about-left, .about-right, .about-team {
+      width: 100%;
+      float: none;
+    }
+    .about-left h2 {
+      text-align: center;
+    }
+  }
+  

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,8 +41,11 @@
 				<th>Maximum Amount</th>
 				<th>Low Interest Rate</th>
 				<th>Illustration Rate</th>
-				<th>Initiation Fee percentage rate</th>
+				<th>Amount Borrowed</th>
+				<th>Initiation Fee</th>
 				<th>Monthly Service Fee</th>
+				<th>Amount Payable</th>
+				<th>Monthly Installment Amount</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -51,15 +55,18 @@
 				<td>{{ feature.max_amount }}</td>
 				<td>{{ feature.low_interest_rate }}</td>
 				<td>{{ feature.illustration_rate }}</td>
-				<td>{{ feature.initiation_fee_perecentage_rate}}</td>
+				<td>{{ feature.amount_borrowed }}</td>
+				<td>{{ feature.initiation_fee }}</td>
 				<td>{{ feature.monthly_service_fee }}</td>
+				<td>{{ feature.amount_payable }}</td>
+				<td>{{ feature.monthly_installment_amount }}</td>
 			</tr>
 			{% endfor %}
 		</tbody>
 	</table>
 </body>
-</html> 
-{% comment %} <style>
+</html> {% endcomment %}
+<style>
     td {
       text-align: center;
     }
@@ -103,40 +110,46 @@
     text-align: center;
   }
 </style>
-
+<body>
 <table id="my-table">
   <tr>
-  <th rowspan="5"><img src="{%static 'img/absa.png'%}"></th>
+    <th rowspan="5">
+      {% for bank in banks %}
+      <img src="{{bank.image.url}}"/>
+      {% endfor %}
+    </th>
     <th>Monthly Instalments</th>
     <th>Number of Payments</th>
     <th>Interest Rate</th>
     <th>Qualified Amount</th>
   </tr>
   <tr>
-    <td id="pmt-1"></td>
+    <td class="payment" id="pmt-1"></td>
     <td>60</td>
     <td>0.00858</td>
     <td>$10,000.00</td>
   </tr>
   <tr>
-    <td id="pmt-2"></td>
+    <td class="payment" id="pmt-2"></td>
     <td>48</td>
     <td>0.00858</td>
     <td>$10,000.00</td>
   </tr>
   <tr>
-    <td id="pmt-3"></td>
+    <td class="payment" id="pmt-3"></td>
     <td>36</td>
     <td>0.00858</td>
     <td>$10,000.00</td>
   </tr>
   <tr>
-    <td id="pmt-4"></td>
+    <td class="payment" id="pmt-4"></td>
     <td>24</td>
     <td>0.00858</td>
     <td>$10,000.00</td>
   </tr>
+ 
 </table>
+  <a href='/Banks/Applicant/'><button>Apply</button></a>
 
 <script>
   function calculatePmt(n, r, pv) {
@@ -144,9 +157,7 @@
     var pmt = pv * rPerMonth / (1 - Math.pow(1 + rPerMonth, -n));
     return pmt.toFixed(2);
   }
-//n = number of Payments
-//r = interest rate
-//pv = loan amount(present value)
+
   var table = document.getElementById("my-table");
 
   for (var i = 1; i < table.rows.length; i++) {
@@ -155,162 +166,9 @@
     var r = parseFloat(row.cells[2].textContent);
     var pv = parseFloat(row.cells[3].textContent.replace(/[^0-9.-]+/g, ""));
     var pmt = calculatePmt(n, r, pv);
-    row.cells[0].textContent = "$" + pmt;
+    row.cells[0].innerHTML = "$" + pmt;
+    row.cells[0].classList.add("payment");
   }
 </script>
-
-<table>
-  <tr>
-  <th rowspan="5"><img src="{%static 'img/absa.png'%}"></th>
-    <th>Monthly Instalments</th>
-    <th>Number of Payments</th>
-    <th>Interest Rate</th>
-    <th>Qualified Amount</th>
-  </tr>
-  <tr>
-    <td id="pmt135"></td>
-    <td>60</td>
-    <td>0.01125</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt135"></td>
-    <td>48</td>
-    <td>0.01125</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt135"></td>
-    <td>36</td>
-    <td>0.01125</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt135"></td>
-    <td>24</td>
-    <td>0.01125</td>
-    <td>$20,000.00</td>
-  </tr>
-</table>
-
-<script>
-function calculatePMT(rate, nper, pv) {
-  const r = rate / 12;
-  const pmt = r * pv / (1 - Math.pow(1 + r, -nper));
-  return pmt.toFixed(2);
-}
-
-const pmt135Cells = document.querySelectorAll('#pmt135');
-pmt135Cells.forEach(cell => {
-  const nper = parseInt(cell.parentElement.children[1].textContent);
-  const rate = parseFloat(cell.parentElement.children[2].textContent);
-  const pv = parseFloat(cell.parentElement.children[3].textContent.replace(/[^0-9.-]+/g,""));
-  const pmt = calculatePMT(rate, nper, pv);
-  cell.textContent = "$" + pmt;
-});
-</script>
-
-<table>
-  <tr>
-    <th rowspan="5"><img src="{%static 'img/absa.png'%}"></th>
-    <th>Monthly Instalments</th>
-    <th>Number of Payments</th>
-    <th>Interest Rate</th>
-    <th>Qualified Amount</th>
-  </tr>
-  <tr>
-    <td id="pmt178"></td>
-    <td>60</td>
-    <td>0.01483</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt178"></td>
-    <td>48</td>
-    <td>0.01483</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt178"></td>
-    <td>36</td>
-    <td>0.01483</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt178"></td>
-    <td>24</td>
-    <td>0.01483</td>
-    <td>$12,000.00</td>
-  </tr>
-</table>
-
-<script>
-function calculatePMT(rate, nper, pv) {
-  const r = rate / 12;
-  const pmt = r * pv / (1 - Math.pow(1 + r, -nper));
-  return pmt.toFixed(2);
-}
-
-const pmt178Cells = document.querySelectorAll('#pmt178');
-pmt178Cells.forEach(cell => {
-  const nper = parseInt(cell.parentElement.children[1].textContent);
-  const rate = parseFloat(cell.parentElement.children[2].textContent);
-  const pv = parseFloat(cell.parentElement.children[3].textContent.replace(/[^0-9.-]+/g,""));
-  const pmt = calculatePMT(rate, nper, pv);
-  cell.textContent = "$" + pmt;
-});
-</script>
-
-<table>
-  <tr>
-  <th rowspan="5"><img src="{%static 'img/absa.png'%}"></th>
-    <th>Monthly Instalments</th>
-    <th>Number of Payments</th>
-    <th>Interest Rate</th>
-    <th>Qualified Amount</th>
-  </tr>
-  <tr>
-    <td id="pmt285"></td>
-    <td>60</td>
-    <td>0.01425</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt285"></td>
-    <td>48</td>
-    <td>0.01425</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt285"></td>
-    <td>36</td>
-    <td>0.01425</td>
-    <td>$10,000.00</td>
-  </tr>
-  <tr>
-    <td id="pmt285"></td>
-    <td>24</td>
-    <td>0.01425</td>
-    <td>$12,000.00</td>
-  </tr>
-</table>
-
-<script>
-function calculatePMT(rate, nper, pv) {
-  const r = rate / 12;
-  const pmt = r * pv / (1 - Math.pow(1 + r, -nper));
-  return pmt.toFixed(2);
-}
-
-const pmt285Cells = document.querySelectorAll('#pmt285');
-pmt285Cells.forEach(cell => {
-  const nper = parseInt(cell.parentElement.children[1].textContent);
-  const rate = parseFloat(cell.parentElement.children[2].textContent);
-  const pv = parseFloat(cell.parentElement.children[3].textContent.replace(/[^0-9.-]+/g,""));
-  const pmt = calculatePMT(rate, nper, pv);
-  cell.textContent = "$" + pmt;
-});
-</script>
-
-
- {% endcomment %}
+</body>
+</html>

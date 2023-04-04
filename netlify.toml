@@ -1,6 +1,6 @@
 [build]
   publish = "C:\Users\CYNTHIA J\OneDrive\Desktop\wed\AfricanecityBankLoan"
-  command = "python manage.py collectstatic --noinput"
+  command = "python manage.py collectstatic --noinput && python manage.py process_html"
 
 [build.environment]
   DJANGO_SETTINGS_MODULE = "BankProject.settings"

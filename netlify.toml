@@ -3,7 +3,7 @@
   command = "python manage.py collectstatic --noinput"
 
 [build.environment]
-  DJANGO_SETTINGS_MODULE = "AfricanecityBankLoan.settings"
+  DJANGO_SETTINGS_MODULE = "BankProject.settings"
 
 [build.processing]
   # process all HTML files to update relative links

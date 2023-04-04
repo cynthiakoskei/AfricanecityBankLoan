@@ -9,11 +9,11 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Bank(models.Model):
     bank_name= models.CharField(max_length=100)
-    bank_url = models.URLField(default="https://www.absa.africa/", max_length=200)
+    bank_url = models.URLField(default="https://www.absabank.co.ke/personal/borrow/personal-loan/", max_length=200)
     image = models.ImageField()
     interest_rate = models.FloatField()
-    min_loan_amount = models.IntegerField()
-    max_loan_amount = models.IntegerField()
+    min_loan_amount = models.IntegerField(default=25000)
+    max_loan_amount = models.IntegerField(default=150000)
     def __str__(self): 
         return self.bank_name
     
@@ -63,9 +63,6 @@ class Application(models.Model):
     widgets = {
         'birth_date': DateInput(attrs={'type': 'date'})
     }
-
-
-
     
 class Features(models.Model):
     min_amount = models.FloatField()

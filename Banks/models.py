@@ -67,7 +67,7 @@ class Features(models.Model):
     max_amount = models.FloatField(default=150000)
     low_interest_rate =  models.FloatField()
     illustration_rate = models.FloatField()
-    initiation_fee_perecentage_rate = models.FloatField()
+    initiation_fee_perecentage_rate = models.FloatField(null=False)
     monthly_service_fee = models.FloatField()
     bank_name = models.ForeignKey(Bank, null=True,on_delete=models.CASCADE)
 

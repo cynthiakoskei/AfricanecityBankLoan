@@ -19,19 +19,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-<<<<<<< HEAD
     path("admin/", admin.site.urls),
     path("", include("Home.urls")),
     path('Accounts/', include("Accounts.urls")),
     path('Banks/', include("Banks.urls"))
 ]
-<<<<<<< HEAD
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
-=======
-=======
-    path('admin/', admin.site.urls),
-    path('', include("Home.urls") ),
-]
->>>>>>> db9809b (Template index and css changes)
->>>>>>> origin/main

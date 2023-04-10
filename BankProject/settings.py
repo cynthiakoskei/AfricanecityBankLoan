@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     "Home",
     "Accounts",
     "Banks",
-    "Loan",
     'phone_field',
     'bootstrap5',
     'crispy_forms',

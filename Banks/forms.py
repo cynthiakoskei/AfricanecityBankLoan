@@ -39,7 +39,7 @@ class expenditureForm(forms.ModelForm):
                   'childcare', 'miscellaneous_expense']
         #what appears in the html template(form)
         widgets = {
-            'total_salary': forms.Select(attrs={'class': 'form-select'}),#the user selcts his account(sallary) in a dropdown menu
+            'total_salary': forms.NumberInput(attrs={'class': 'form-control'}),
             'rent_or_mortgage_expense': forms.NumberInput(attrs={'class': 'form-control'}),
             'property_taxes': forms.NumberInput(attrs={'class': 'form-control'}),
             'home_owner_insurance': forms.NumberInput(attrs={'class': 'form-control'}),
@@ -65,14 +65,14 @@ class expenditureForm(forms.ModelForm):
     def calculate_deficit(self):
         cleaned_data = super().clean()
         initial_salary = cleaned_data.get('total_salary')#get what the user selcted in the dropdown menu and links it with the total_salary field in the model
-        raw_salary = initial_salary.salary#gets salary from the loan request model and saves it in raw_salary variable
+    
         #loops through all the fields and takes it as cleaned data then adds and saves it on expenses_total
         expenses_total = sum([cleaned_data.get(field, 0) for field in self.Meta.fields[2:]])
         #if the total expenses is more than the raw_salary raise an error to the user
-        if expenses_total > raw_salary:
+        if expenses_total > initial_salary:
             raise forms.ValidationError('Total expenses cannot exceed salary')
         #deduct the total expenses from the raw_salary and save it to updated salary
-        updated_salary = raw_salary - expenses_total
+        updated_salary = initial_salary - expenses_total
         #take the updated salary as cleaned data 
         cleaned_data['updated_salary'] = updated_salary
         #return all the cleaned data for them to be saved in the model

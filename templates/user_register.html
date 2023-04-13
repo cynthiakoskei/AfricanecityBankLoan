@@ -13,6 +13,8 @@
     <title>Continental Banking Site</title>
     <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
 	<link rel="stylesheet" href="/static/styles/navbar.css">
+	  <!-- javascript link -->
+	  <script type="module" src="{% static 'js/login.js' %}" defer></script>
 </head>
 
 <body>
@@ -27,11 +29,6 @@
 			<li><a href="/Banks/About Us/">About us</a></li>
 			<li><a href="/Banks/Contact/">Contact</a></li>
 			<li><a href="/Banks/Help/">Help</a></li>
-			{% if user.is_authenticated %}
-          <li><a href="logout">Logout</a></li>
-          {% else %}
-          <li><a href="{% url 'login' %}">Login</a></li>
-          {% endif %}
 		</ul>
 	</nav>
 	<!-- end of nav/menu -->
@@ -44,24 +41,27 @@
             <p>Get Everything Done From The Comfort Of Your Own Home. Before you get started, learn how it works by clicking the button below.</p>
 			<a href="/Banks/Help/" class="btn">Help</a>
         </div>
-       <div class="form" id="form">
-			<div class="login_container">
-				<h1>Sign In</h1>
+		
+		<div class="form" id="form">
+            <div id="create-account" class="login_container">
+                <h1>Sign Up below</h1>
 				<form method="post" autocomplete="off">
 					{% csrf_token %}
 					{% if messages %}
 						{% for message in messages %}
-						<h2>{{message}}</h2>
+							<h2>{{message}}</h2>
 						{% endfor %}
 					{% endif %}
+					<input id="email_signUp" name="email" type="email" placeholder="Email">
 					<input id="username" name="username" type="text" placeholder="Username">
-					<input id="password" name="password" type="password" placeholder="Password">
-					<button id="submit">Login</button>
-					<p><span>Don't have an account</span></p>
-					<a id="create-account" href="{% url 'user_register' %}">Sign Up</a>
+					<input id="password1" name="password1" type="password" placeholder="Password">
+					<input id="password2" name="password2" type="password" placeholder="Confirm Password">
+					<button id="Register_btn" type="submit">Sign Up</button>
+					<a id="return_btn" href="{% url 'login' %}">Already have an account</a>
 				</form>
-			</div>	
-        </div> 
+            </div>
+        </div>
+
     </section>
     <!-- home section ends here -->
 	<!-- footer -->

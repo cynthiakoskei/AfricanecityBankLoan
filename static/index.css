@@ -121,6 +121,73 @@ button,
     font-weight: bold;
 }
 
+.home .login_container h1 {
+    font-size: 2rem;
+    margin-bottom: 6%;
+    text-align: center;
+    font-family: "Fredoka One", cursive;
+    color: var(--black);
+    letter-spacing: 0.1rem;
+}
+
+.home .login_container p {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid#333;
+    line-height: 0.1rem;
+}
+
+.home .login_container p span {
+    background: white;
+    padding: 0 10px;
+}
+
+.home .login_container input {
+    margin-bottom: 3%;
+}
+
+.home .login_container input:last-of-type {
+    margin-bottom: 0;
+}
+
+.home .login_container input,
+button {
+    padding: 3%;
+    width: 100%;
+}
+
+.home .login_container button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.home .login_container #submit,
+#Register_btn {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    margin-top: 5%;
+}
+
+.home .login_container #signUp_btn {
+    border: none;
+}
+
+.home .login_container #create-account {
+    display: none;
+}
+
+.home .login_container #return_btn {
+    background: none;
+    color: #fff;
+    text-decoration: underline;
+    border: none;
+    margin-top: 3%;
+}
+
 @media(max-width:991px) {
     html {
         font-size: 55%;

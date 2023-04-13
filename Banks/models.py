@@ -85,7 +85,7 @@ class Contact(models.Model):
 
 
 class Personal_expenditure(models.Model):
-    total_salary = models.ForeignKey(Loan_Request, on_delete=models.CASCADE)
+    total_salary = models.FloatField(default=10000, validators=[MinValueValidator(10000)])
     rent_or_mortgage_expense = models.FloatField()
     property_taxes = models.FloatField()
     home_owner_insurance = models.FloatField()

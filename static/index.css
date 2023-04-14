@@ -145,6 +145,7 @@ button,
 }
 
 .home .login_container input {
+    text-transform: none;
     margin-bottom: 3%;
 }
 
@@ -186,6 +187,10 @@ button {
     text-decoration: underline;
     border: none;
     margin-top: 3%;
+}
+
+.home .login_container h2 {
+    color: red;
 }
 
 @media(max-width:991px) {

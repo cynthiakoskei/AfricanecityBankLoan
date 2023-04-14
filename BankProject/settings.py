@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "Home",
-    "Accounts",
     "Banks",
     'phone_field',
     'bootstrap5',

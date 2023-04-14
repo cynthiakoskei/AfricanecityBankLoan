@@ -85,26 +85,26 @@ class Contact(models.Model):
 
 
 class Personal_expenditure(models.Model):
-    total_salary = models.ForeignKey(Loan_Request, on_delete=models.CASCADE)
-    rent_or_mortgage_expense = models.FloatField()
-    property_taxes = models.FloatField()
-    home_owner_insurance = models.FloatField()
-    water = models.FloatField()
-    electricity = models.FloatField()
-    household_supplies = models.FloatField()
-    dining_out = models.FloatField()
-    takeouts = models.FloatField()
-    personal_care = models.FloatField()
-    doctors_visits = models.FloatField()
-    insurance_premiums = models.FloatField()
-    entertainment = models.FloatField()
-    credit_cards = models.FloatField()
-    loan_debts = models.FloatField()
-    childcare = models.FloatField()
-    miscellaneous_expense = models.FloatField()
-    updated_salary = models.FloatField()
+    total_salary = models.FloatField(default=10000, validators=[MinValueValidator(10000)])
+    rent_or_mortgage_expense = models.FloatField(default=0)
+    property_taxes = models.FloatField(default=0)
+    home_owner_insurance = models.FloatField(default=0)
+    water = models.FloatField(default=0)
+    electricity = models.FloatField(default=0)
+    household_supplies = models.FloatField(default=0)
+    dining_out = models.FloatField(default=0)
+    takeouts = models.FloatField(default=0)
+    personal_care = models.FloatField(default=0)
+    doctors_visits = models.FloatField(default=0)
+    insurance_premiums = models.FloatField(default=0)
+    entertainment = models.FloatField(default=0)
+    credit_cards = models.FloatField(default=0)
+    loan_debts = models.FloatField(default=0)
+    childcare = models.FloatField(default=0)
+    miscellaneous_expense = models.FloatField(default=0)
+    updated_salary = models.FloatField(default=0)
     def __str__(self):
-        return f"{self.updated_salary} - {self.total_salary.first_name}" 
+        return f"{self.updated_salary}" 
       
 class Loan(models.Model):
     bank = models.ForeignKey(Bank, on_delete=models.CASCADE)

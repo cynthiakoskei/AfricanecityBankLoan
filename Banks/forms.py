@@ -64,7 +64,7 @@ class expenditureForm(forms.ModelForm):
     #function to calculate the total expenses and deduct from the initial salary    
     def calculate_deficit(self):
         cleaned_data = super().clean()
-        initial_salary = cleaned_data.get('total_salary')#get what the user selcted in the dropdown menu and links it with the total_salary field in the model
+        initial_salary = cleaned_data.get('total_salary')
     
         #loops through all the fields and takes it as cleaned data then adds and saves it on expenses_total
         expenses_total = sum([cleaned_data.get(field, 0) for field in self.Meta.fields[2:]])

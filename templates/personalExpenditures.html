@@ -7,63 +7,177 @@
 {% block content %}
 <div class="container mt-3" style="width: 95%; font-size: 14px">
     <form method="POST" class="card p-3 mt-5" autocomplete="off">
-        {% csrf_token %}
-        <title> Loan Application Form</title>
-        <center><h1> LOAN APPLICATION FORM</h1><center>
+      {% csrf_token %}
+      <title>Loan Application Form</title>
+      <h1>LOAN APPLICATION FORM</h1>
+      <div class="row flex-column">
         <div class="row">
             <div class="col-6">
-                {{ form.total_salary|as_crispy_field }}
+              {{ form.total_salary|as_crispy_field }}
             </div>
             <div class="col-6">
-                {{ form.rent_or_mortgage_expense|as_crispy_field }}
+              {{ form.rent_or_mortgage_expense|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              {{ form.property_taxes|as_crispy_field }}
             </div>
             <div class="col-6">
-                {{ form.property_taxes|as_crispy_field }}
+              {{ form.home_owner_insurance|as_crispy_field }}
             </div>
-            <div clas="col-6">
-                {{ form.home_owner_insurance|as_crispy_field }}
+          </div>
+          <div class="row">
+            <div class="col-6">
+              {{ form.water|as_crispy_field }}
             </div>
             <div class="col-6">
-                {{ form.water|as_crispy_field }}
+              {{ form.electricity|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              {{ form.household_supplies|as_crispy_field }}
             </div>
             <div class="col-6">
-                {{ form.electricity|as_crispy_field }}
+              {{ form.dining_out|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              {{ form.takeouts|as_crispy_field }}
             </div>
             <div class="col-6">
-                {{ form.household_supplies|as_crispy_field }}
+              {{ form.personal_care|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              {{ form.doctors_visits|as_crispy_field }}
             </div>
             <div class="col-6">
-                {{ form.dining_out|as_crispy_field }}
+              {{ form.insurance_premiums|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              {{ form.entertainment|as_crispy_field }}
             </div>
             <div class="col-6">
-                {{ form.takeouts|as_crispy_field }}
+              {{ form.credit_cards|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              {{ form.loan_debts|as_crispy_field }}
             </div>
             <div class="col-6">
-                {{ form.personal_care|as_crispy_field }}
+              {{ form.childcare|as_crispy_field }}
             </div>
+          </div>
+          <div class="row">
             <div class="col-6">
-                {{ form.doctors_visits|as_crispy_field }}
+              {{ form.miscellaneous_expense|as_crispy_field }}
             </div>
-			<div class="col-6">
-                {{ form.insurance_premiums|as_crispy_field }}
-            </div>
-			<div class="col-6">
-                {{ form.entertainment|as_crispy_field }}
-            </div>
-			<div class="col-6">
-                {{ form.credit_cards|as_crispy_field }}
-            </div>
-			<div class="col-6">
-                {{ form.loan_debts|as_crispy_field }}
-            </div>
-			<div class="col-6">
-                {{ form.childcare|as_crispy_field }}
-            </div>
-			<div class="col-6">
-                {{ form.miscellaneous_expense|as_crispy_field }}
-            </div>
-        </div>        
-    <center><button type="submit" class="btn btn-primary mt-3" style="width: 45%">Submit</button></center>
-    </form> 
-</div>
+          </div>
+          
+      </div>
+      <div class="row text-center">
+        <div class="col-6">
+          <button type="button" class="btn btn-secondary mt-3" style="width: 45%" onclick="window.history.back()">Back</button>
+        </div>
+        <div class="col-6">
+          <button type="submit" class="btn btn-primary mt-3" style="width: 45%">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>  
 {% endblock %}
+
+<style>
+    body {
+  background-color: #436994;
+  scroll-behavior: smooth;
+}
+
+/* .container {
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+} */
+.card {
+    background-color: #d2dde48c;
+}
+h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+select {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 18px;
+  padding: 12px 24px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #13c422;
+}
+
+.btn-secondary{
+    background-color: #7d7e80;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 18px;
+  padding: 12px 24px;
+  transition: background-color 0.3s ease;
+}
+.btn-secondary:hover {
+  background-color: red;
+  color: white;
+}
+
+.col-6 {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .col-6 {
+    width: 100%;
+  }
+  .table-responsive {
+    font-size: 12px;
+  }
+  .table-responsive th,
+  .table-responsive td {
+    padding: 0.5rem;
+  }
+}
+</style>

@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Bank,Application,Features,Help,Contact,Personal_expenditure,Loan,Loan_Request
+from .models import Bank,Application,Features,Help,Contact,Personal_expenditure,Loan
 from .forms import BankForm,ApplicationForm,ContactForm,expenditureForm,LoanCalculatorForm
 
 # Create your views here.

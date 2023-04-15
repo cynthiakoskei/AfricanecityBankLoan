@@ -1,7 +1,6 @@
 from django.db import models
 from phone_field import PhoneField
 from django.forms.widgets import DateInput
-from Home.models import Loan_Request
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 

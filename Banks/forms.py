@@ -1,5 +1,5 @@
 from django import forms
-from .models import Bank,Application,Contact,Personal_expenditure,Loan,Loan_Request
+from .models import Bank,Application,Contact,Personal_expenditure,Loan
 class BankForm(forms.ModelForm):
     class Meta:
         model =Bank

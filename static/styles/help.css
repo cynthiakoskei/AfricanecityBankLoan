@@ -10,7 +10,7 @@
 /* help body content */
 .help{
     padding-top: 90px;
-    height: 100vh;
+    padding-bottom: 30px;
     min-height: 500px;
     background: url("/static/images/help.avif") no-repeat center;
     background-size: cover;

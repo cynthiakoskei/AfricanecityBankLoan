@@ -29,16 +29,16 @@
 	<section class="contact" id="contact">
 		<div class="container">
 			<h1><b>Contact Us</h1>
-			<form method="post">
+			<form action="https://formsubmit.co/plpgroupp24@gmail.com" method="post">
 				{% csrf_token %}
 				<b><label for="name">Name:</label>
-					<input type="text" id="name" name="name" required>
+					<input type="text" id="name" name="name" placeholder="Full Name" required>
 					<b><label for="email">Email:</label>
-						<input type="email" id="email" name="email" required>
+						<input type="email" id="email" name="email" placeholder="Email Address" required>
 						{% comment %} <b><label for="subject">Subject:</label>
-							<input type="text" id="subject" name="subject" required> {% endcomment %}
+							<input type="text" id="subject" name="subject" placeholder="Subject" required> {% endcomment %}
 							<b><label for="message">Message:</label>
-								<textarea id="message" name="message" required></textarea>
+								<textarea id="message" name="message" placeholder="Your Message" required></textarea>
 								<input type="submit" value="Send">
 			</form>
 		</div>
